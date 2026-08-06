@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fernando M. Delgado-Chaves, PhD — AI Engineer for Life Sciences</title>
+<meta name="description" content="AI engineer for the life sciences. I build agentic AI systems that do real science — grounded in a decade of computational biology, proven in shipped products, inspectable at every step.">
+<meta name="author" content="Fernando M. Delgado-Chaves">
+<meta name="theme-color" content="#F8F8F8">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Fernando M. Delgado-Chaves, PhD — AI Engineer for Life Sciences">
+<meta property="og:description" content="Agentic AI systems that do real science — grounded in a decade of computational biology and proven in shipped products.">
+<meta property="og:image" content="media/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23fff'/%3E%3Ccircle cx='20' cy='22' r='7' fill='%230B6C78'/%3E%3Ccircle cx='44' cy='22' r='7' fill='%230050B6'/%3E%3Ccircle cx='20' cy='44' r='7' fill='%23D98C13'/%3E%3Ccircle cx='44' cy='44' r='7' fill='%23643E8F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   ASSEMBLY INSTRUCTIONS — a spec sheet for a person.
+   Palette sampled from the actual LEGO renders.
+   ───────────────────────────────────────────────────────────── */
+:root{
+  /* the canvas is set to the exact studio value of the renders (#F8F8F8),
+     so every figure and clip blends into the page with no visible plate */
+  --paper:#F8F8F8;
+  --raised:#FFFFFF;
+  --ink:#0E0E12;
+  --ink-2:#54545F;
+  --ink-3:#82828E;
+  --rule:#E2E2E8;
+  --rule-2:#EDEDF1;
+
+  --teal:#0B6C78;      /* science  */
+  --blue:#0050B6;      /* ai       */
+  --amber:#C57A0B;     /* founder  */
+  --violet:#643E8F;    /* comms    */
+  --brick:#C8102E;     /* the shared red hub */
+
+  --accent:var(--teal);
+  --accent-soft:rgba(11,108,120,.10);
+
+  --display:'Geist','Inter',-apple-system,'Segoe UI',sans-serif;
+  --body:'Geist','Inter',-apple-system,'Segoe UI',sans-serif;
+  --mono:'Geist Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
+
+  --pad:clamp(1.25rem,5vw,4.5rem);
+  --maxw:1320px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:clamp(1rem,.97rem + .18vw,1.0625rem);
+  line-height:1.65;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--accent);color:#fff}
+
+/* studs: the only texture on the page, barely there */
+.studs{
+  background-image:radial-gradient(circle at center,var(--rule) 1.4px,transparent 1.5px);
+  background-size:22px 22px;
+}
+/* fine grid backdrop, fading out before it reaches the content */
+.grid-bg{position:relative;isolation:isolate}
+.grid-bg::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(to right,rgba(14,14,18,.055) 1px,transparent 1px),
+                   linear-gradient(to bottom,rgba(14,14,18,.055) 1px,transparent 1px);
+  background-size:24px 24px;
+  -webkit-mask-image:radial-gradient(ellipse 78% 62% at 50% 42%,#000 40%,transparent 100%);
+          mask-image:radial-gradient(ellipse 78% 62% at 50% 42%,#000 40%,transparent 100%);
+}
+
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+
+/* ── type ─────────────────────────────────────────────── */
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.03em;line-height:1.05}
+h1{font-size:clamp(2.5rem,1.05rem + 4.5vw,5rem);font-weight:700;letter-spacing:-.038em;text-wrap:balance}
+h2{font-size:clamp(1.85rem,1.05rem + 2.8vw,3.2rem);font-weight:700;letter-spacing:-.034em;text-wrap:balance}
+h3{font-size:clamp(1.12rem,1rem + .65vw,1.45rem);font-weight:600;letter-spacing:-.022em}
+em{font-style:normal;color:var(--accent)}
+.lede{font-size:clamp(1.1rem,1rem + .7vw,1.5rem);line-height:1.5;color:var(--ink-2);max-width:34ch}
+.lede strong{color:var(--ink);font-weight:600}
+p strong{font-weight:600}
+p em, li em{color:var(--accent);font-style:normal}
+em.prose{font-style:italic;color:inherit}
+
+/* part-number metadata, the instruction-manual voice */
+.part{
+  font-family:var(--mono);font-size:.6875rem;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+  display:flex;flex-wrap:wrap;align-items:center;gap:.7rem;
+}
+.part::before{
+  content:"";width:1.6rem;height:1px;background:var(--accent);flex:none;
+  transition:background .5s ease;
+}
+
+/* ── skip link ────────────────────────────────────────── */
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:#fff;
+  padding:.85rem 1.2rem;border-radius:2px;font-family:var(--mono);font-size:.8rem;transition:top .18s;
+  display:inline-flex;align-items:center;min-height:46px;text-decoration:none}
+.skip:focus{top:1rem}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* ── header ───────────────────────────────────────────── */
+header{
+  position:sticky;top:0;z-index:100;background:rgba(248,248,248,.88);
+  backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid transparent;
+  transition:border-color .3s ease;
+}
+header.stuck{border-bottom-color:var(--rule)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding-block:.35rem;min-height:58px}
+.brand{font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:-.025em;
+  text-decoration:none;display:flex;align-items:center;gap:.6rem;min-height:44px;padding-right:.5rem}
+.brand i{width:.62rem;height:.62rem;border-radius:50%;background:var(--accent);
+  transition:background .5s ease;flex:none}
+nav{display:flex;gap:clamp(.9rem,2.2vw,2rem)}
+nav a{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-2);text-decoration:none;padding:.85rem 0;position:relative;transition:color .2s;
+  display:flex;align-items:center;min-height:44px}
+nav a::after{content:"";position:absolute;left:0;right:100%;bottom:.7rem;height:1.5px;
+  background:var(--accent);transition:right .28s cubic-bezier(.2,.7,.3,1)}
+nav a:hover{color:var(--ink)}
+nav a:hover::after{right:0}
+/* on narrow phones reclaim the space from the brand, not from the nav —
+   four jump targets matter more than the full name in the corner */
+@media(max-width:680px){
+  .brand{font-size:0}
+  .brand::after{content:"FMDC";font-size:1rem;letter-spacing:.02em}
+  nav{gap:.7rem}
+  nav a{font-size:.68rem;letter-spacing:.06em}
+  nav a:nth-child(2),nav a:nth-child(3){display:flex}
+}
+
+/* ── hero ─────────────────────────────────────────────── */
+.hero{padding-block:clamp(2rem,5vw,4rem) clamp(2rem,5vw,4rem);position:relative}
+.hero-grid{display:grid;grid-template-columns:1.14fr .86fr;gap:clamp(1rem,3vw,3rem);align-items:center}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:1.5rem}
+  /* face first, and small enough that headline + claim + CTA + portrait
+     all land on the first screen */
+  .hero-grid > div{order:2}
+  .hero-grid > .hero-fig{order:1}
+  .hero-fig img.portrait{width:clamp(140px,36vw,190px)}
+}
+/* availability pill, riding the eyebrow line */
+.status{display:inline-flex;align-items:center;gap:.5rem;margin-left:.9rem;
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-2);border:1px solid var(--rule);border-radius:999px;
+  padding:.34rem .72rem;background:var(--raised)}
+.status b{width:.4rem;height:.4rem;border-radius:50%;background:var(--accent);
+  transition:background .5s ease;flex:none}
+/* the single highest-value line on a job-search page: keep it on phones and
+   let it wrap onto its own row instead of deleting it */
+@media(max-width:560px){
+  /* a zero-height full-basis spacer forces the wrap, so the pill keeps its
+     shrink-to-fit width instead of stretching into a full-width bar */
+  .part:has(.status)::after{content:"";flex-basis:100%;height:0;order:1}
+  .status{display:inline-flex;margin-left:0;margin-top:0;order:2;flex:0 0 auto}
+}
+
+/* the hero portrait: a real face, circular, held by the accent halo */
+.hero-fig img.portrait{
+  width:min(100%,clamp(230px,30vw,400px));height:auto;aspect-ratio:1;border-radius:50%;
+  margin-inline:auto;object-fit:cover;
+  box-shadow:0 0 0 1px var(--rule), 0 26px 50px -30px rgba(14,14,18,.6)}
+.hero-fig:has(img.portrait)::after{display:none}   /* no ground shadow under a circle */
+
+.hero h1{margin:1.1rem 0 1.4rem}
+.hero h1 span{display:block;color:var(--accent);transition:color .5s ease}
+.hero-fig{position:relative}
+.hero-fig img{width:100%;height:auto;position:relative;z-index:1}
+/* the cutouts carry real alpha, so a tinted halo can sit behind the build */
+.hero-fig::before{
+  content:"";position:absolute;inset:6% 4% 10%;border-radius:50%;z-index:0;
+  background:radial-gradient(ellipse at 50% 55%,var(--accent-soft),transparent 70%);
+  filter:blur(30px);transition:background .6s ease;
+}
+.hero-fig::after{
+  content:"";position:absolute;inset:auto 14% 6% 14%;height:12px;border-radius:50%;z-index:0;
+  background:radial-gradient(ellipse at center,rgba(14,14,18,.13),transparent 72%);
+}
+/* three equal columns that always hold one row: the labels wrap inside their
+   own cell rather than dropping a chip and leaving a dangling divider */
+.chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0 0 2.1rem;
+  border-top:1px solid var(--rule)}
+.chip{padding:.85rem 1rem .95rem 0;border-right:1px solid var(--rule);min-width:0}
+.chip:last-child{border-right:0;padding-right:0}
+@media(max-width:560px){
+  .chips{grid-template-columns:1fr 1fr}
+  .chip:nth-child(2){border-right:0}
+  .chip:nth-child(3){grid-column:1/-1;border-top:1px solid var(--rule)}
+}
+.chip small{display:block;font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:.28rem}
+.chip b{font-family:var(--display);font-weight:600;font-size:clamp(.9rem,.86rem + .17vw,1rem);
+  letter-spacing:-.015em;line-height:1.3;display:block}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.5rem;
+  border-radius:2px;text-decoration:none;font-weight:600;font-size:.95rem;
+  min-height:48px;transition:transform .18s cubic-bezier(.2,.7,.3,1),background .3s,box-shadow .25s}
+.btn-solid{background:var(--ink);color:#fff}
+.btn-solid:hover{transform:translateY(-2px);box-shadow:0 10px 24px -12px rgba(14,14,18,.65)}
+.btn-line{border:1.5px solid var(--rule);color:var(--ink)}
+.btn-line:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn svg{width:1rem;height:1rem;flex:none}
+
+/* ── the gap: full-bleed statement ────────────────────── */
+.gap{padding-block:clamp(2.75rem,5.5vw,4.5rem);border-block:1px solid var(--rule);position:relative}
+.gap blockquote{font-family:var(--display);font-weight:600;letter-spacing:-.032em;
+  font-size:clamp(1.6rem,1rem + 3.1vw,3.4rem);line-height:1.14;max-width:22ch;text-wrap:balance}
+.gap blockquote em{color:var(--accent);font-style:normal}
+
+/* ── the narrative: sticky stage + chapters ───────────── */
+.narrative{position:relative}
+.narr-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,3rem);align-items:start}
+.stage-col{position:sticky;top:58px;height:calc(100vh - 58px);display:flex;align-items:center;
+  justify-content:center;pointer-events:none}
+.stage{position:relative;width:100%;aspect-ratio:4/3;max-height:calc(100vh - 12rem);overflow:hidden}
+/* Hard swap, never a crossfade. The clips hold their exact endpoint frames, so
+   a still and frame 0 of the next clip are the same picture — switching
+   instantly is invisible, whereas fading let the near-white page show through
+   both layers and read as a white flash between transitions. */
+.stage > img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;visibility:hidden;opacity:0}
+.stage > img.on{visibility:visible;opacity:1}
+.stage-glow{
+  position:absolute;inset:12% 6% 6%;z-index:-1;border-radius:50%;
+  background:radial-gradient(ellipse at 50% 60%,var(--accent-soft),transparent 68%);
+  filter:blur(26px);transition:background .6s ease;
+}
+.chapters{display:grid}
+.chapter{min-height:76vh;display:flex;flex-direction:column;justify-content:center;
+  padding-block:clamp(2rem,7vh,4.5rem);gap:1.15rem}
+.chapter h2{margin-top:.35rem}
+.chapter p{max-width:46ch;color:var(--ink-2)}
+.chapter p strong{color:var(--ink)}
+.chapter .facts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
+.fact{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;padding:.42rem .7rem;
+  border:1px solid var(--rule);border-radius:2px;color:var(--ink-2);background:var(--raised);
+  transition:border-color .35s,color .35s}
+.chapter:hover .fact{border-color:var(--accent)}
+
+/* progress rail */
+.rail{transition:opacity .4s ease;position:fixed;left:max(.35rem,calc((100vw - var(--maxw))/2 - 2.1rem));top:50%;
+  transform:translateY(-50%);z-index:60;display:grid;gap:0}
+.rail button{width:auto;padding:1.1rem 1.25rem;border:0;background:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;line-height:0}
+.rail i{display:block;width:9px;height:9px;border-radius:50%;background:var(--rule);
+  transition:background .35s,transform .35s;position:relative}
+.rail button[aria-current="true"] i{background:var(--accent);transform:scale(1.5)}
+.rail button:hover i{background:var(--ink-3)}
+@media(max-width:1100px){.rail{display:none}}
+
+@media(max-width:900px){
+  .narr-grid{grid-template-columns:1fr;gap:0}
+  /* the pinned band must be OPAQUE behind the media — a translucent tail let
+     live paragraphs render half-erased behind the bricks. The fade now lives
+     in an ::after strip that sits below the band, over nothing. */
+  .stage-col{position:sticky;top:58px;height:auto;padding-block:.75rem 1rem;
+    background:var(--paper);z-index:20}
+  .stage-col::after{content:"";position:absolute;left:0;right:0;top:100%;height:22px;
+    background:linear-gradient(var(--paper),rgba(248,248,248,0));pointer-events:none}
+  .stage{max-height:32vh;aspect-ratio:4/3;margin-inline:auto;width:min(100%,26rem)}
+  .chapter{min-height:auto;padding-block:2.25rem 3.25rem}
+  .chapters{padding-top:.5rem}
+  /* anchor jumps must clear the pinned band, not land under it */
+  #build{scroll-margin-top:calc(58px + 32vh + 2.5rem)}
+}
+
+/* ── generic section frame ────────────────────────────── */
+section{scroll-margin-top:72px}
+.band{padding-block:clamp(3.5rem,8vw,7rem);border-top:1px solid var(--rule)}
+.band-head{margin-bottom:clamp(2rem,4vw,3.25rem);max-width:60ch}
+.band-head h2{margin:.7rem 0 .9rem}
+.band-head p{color:var(--ink-2);max-width:52ch}
+
+/* ── work cards ───────────────────────────────────────── */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));
+  gap:0;border-top:1px solid var(--rule);align-items:start}
+.card{padding:clamp(1.4rem,2.4vw,2rem) clamp(1.2rem,2vw,1.9rem) clamp(1.6rem,2.6vw,2.2rem) 0;
+  border-bottom:1px solid var(--rule);position:relative;display:flex;flex-direction:column;gap:.75rem}
+.card::before{content:"";position:absolute;left:0;top:-1px;width:0;height:2px;
+  background:var(--accent);transition:width .4s cubic-bezier(.2,.7,.3,1)}
+.card:hover::before{width:100%}
+.card .no{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;color:var(--ink-3)}
+.card h3 small{display:block;font-family:var(--mono);font-size:.68rem;font-weight:400;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:.45rem}
+.card p{color:var(--ink-2);font-size:.95rem;flex:1}
+.card a.go{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;color:var(--ink);
+  text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;align-self:flex-start;
+  border-bottom:1.5px solid var(--rule);padding-bottom:.25rem;transition:border-color .25s,color .25s;
+  min-height:44px}
+.card a.go:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ── expertise ────────────────────────────────────────── */
+.depths{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:0}
+.depth{padding:1.6rem 1.5rem 1.8rem 0;border-top:2px solid var(--ink);margin-right:1.5rem}
+.depth:last-child{margin-right:0}
+.depth .no{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;color:var(--ink-3)}
+.depth h3{margin:.5rem 0 .7rem}
+.depth p{color:var(--ink-2);font-size:.93rem}
+
+/* ── research ─────────────────────────────────────────── */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(7rem,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:clamp(2rem,4vw,3rem)}
+.metric{background:var(--raised);padding:1.4rem 1.2rem}
+.metric b{display:block;font-family:var(--display);font-weight:800;letter-spacing:-.045em;
+  font-size:clamp(2rem,1.3rem + 2.4vw,3.4rem);line-height:1;color:var(--accent);
+  transition:color .5s ease}
+.metric span{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3);margin-top:.55rem}
+.papers{display:grid;gap:0;border-top:1px solid var(--rule)}
+.paper{display:grid;grid-template-columns:minmax(8rem,14rem) 1fr;gap:1rem 2rem;
+  padding:1.35rem 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.paper .venue{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--accent);
+  text-transform:uppercase;transition:color .5s ease}
+.paper h3{font-size:clamp(1rem,.95rem + .35vw,1.2rem);font-weight:600;letter-spacing:-.015em;
+  line-height:1.3;margin-bottom:.4rem}
+.paper .role{font-family:var(--mono);font-size:.72rem;color:var(--ink-3);letter-spacing:.04em}
+@media(max-width:640px){.paper{grid-template-columns:1fr;gap:.5rem}}
+
+/* ── recognition ──────────────────────────────────────── */
+.awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));
+  gap:0;border-top:1px solid var(--rule)}
+.award{padding:1.35rem 1.4rem 1.6rem 0;border-bottom:1px solid var(--rule);margin-right:1.4rem}
+.award .yr{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--accent);
+  transition:color .5s ease}
+.award h3{font-size:1.02rem;font-weight:600;margin:.5rem 0 .35rem;letter-spacing:-.01em;line-height:1.25}
+.award p{font-family:var(--mono);font-size:.72rem;color:var(--ink-3);letter-spacing:.04em}
+
+/* ── contact ──────────────────────────────────────────── */
+.contact{padding-block:clamp(4rem,9vw,8rem);border-top:1px solid var(--rule);position:relative}
+.contact h2{margin:.8rem 0 2rem;max-width:16ch}
+/* ── contact: the reach block ─────────────────────────── */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+
+.reach{display:grid;gap:.5rem;border-top:1px solid var(--rule);padding-top:1.5rem}
+
+/* shared icon plate */
+.reach-ico{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:2px;
+  background:var(--accent-soft);color:var(--accent);
+  transition:background .3s,color .3s,border-color .25s}
+.reach-ico svg{width:20px;height:20px;display:block}
+
+/* shared label stack */
+.reach-txt{display:flex;flex-direction:column;gap:.1rem;min-width:0}
+.reach-txt b{font-size:.95rem;font-weight:600;letter-spacing:-.01em;line-height:1.3}
+.reach-sub{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--ink-3);
+  line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.reach-go{margin-left:auto;flex:none;display:grid;place-items:center;color:var(--ink-3);
+  transition:transform .25s,color .25s}
+.reach-go svg{width:16px;height:16px;display:block}
+
+/* primary — the email card + one-tap copy */
+.reach-primary{display:flex;gap:.5rem;align-items:stretch;flex-wrap:wrap}
+.reach-mail{flex:1 1 20rem;min-width:0;display:flex;align-items:center;gap:1rem;
+  min-height:72px;padding:1rem 1.15rem;background:var(--raised);
+  border:1px solid var(--rule);border-radius:2px;text-decoration:none;color:var(--ink);
+  transition:border-color .25s,box-shadow .25s,transform .18s cubic-bezier(.2,.7,.3,1)}
+.reach-mail .reach-sub{font-size:.8rem;color:var(--ink-2)}
+.reach-copy{flex:0 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  min-height:72px;min-width:44px;padding:0 1.15rem;background:var(--raised);cursor:pointer;
+  border:1px solid var(--rule);border-radius:2px;color:var(--ink-2);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  transition:border-color .25s,color .25s}
+.reach-copy svg{width:16px;height:16px;flex:none;display:block}
+.reach-copy .ok{display:none}
+.reach-copy.done{color:var(--accent);border-color:var(--accent)}
+.reach-copy.done .ok{display:block}
+.reach-copy.done .cp{display:none}
+
+/* profiles */
+.reach-grid{display:grid;gap:.5rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.reach-link{display:flex;align-items:center;gap:.85rem;min-height:60px;padding:.8rem 1rem;
+  background:var(--raised);border:1px solid var(--rule);border-radius:2px;
+  text-decoration:none;color:var(--ink);
+  transition:border-color .25s,box-shadow .25s,transform .18s cubic-bezier(.2,.7,.3,1)}
+.reach-link .reach-ico{width:34px;height:34px;background:transparent;color:var(--ink-2);
+  border:1px solid var(--rule)}
+.reach-link .reach-ico svg{width:17px;height:17px}
+
+/* one hover/focus language for every target */
+.reach-mail:hover,.reach-link:hover{border-color:var(--accent);transform:translateY(-2px);
+  box-shadow:0 12px 26px -18px rgba(14,14,18,.55)}
+.reach-mail:hover .reach-go,.reach-link:hover .reach-go{transform:translate(3px,-3px);color:var(--accent)}
+.reach-link:hover .reach-ico{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.reach-copy:hover{border-color:var(--accent);color:var(--accent)}
+.reach-mail:focus-visible,.reach-link:focus-visible,.reach-copy:focus-visible{
+  outline:2.5px solid var(--accent);outline-offset:3px;border-color:var(--accent)}
+
+/* metadata line */
+.reach-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem 1.5rem;padding-top:.6rem;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--ink-3)}
+.reach-meta > span{display:inline-flex;align-items:center;gap:.55rem}
+.reach-meta svg{width:14px;height:14px;flex:none;display:block;color:var(--accent)}
+
+@media (max-width:30rem){
+  .reach-primary{flex-direction:column}
+  /* the flex-basis above is a MAIN-axis value: reset it or the card
+     inherits 20rem as its HEIGHT once the row becomes a column */
+  .reach-mail{flex:0 0 auto;gap:.85rem;padding:.9rem 1rem}
+  .reach-copy{flex:0 0 auto;min-height:52px}
+}
+@media (prefers-reduced-motion:reduce){
+  .reach-mail:hover,.reach-link:hover{transform:none;box-shadow:none}
+  .reach-mail:hover .reach-go,.reach-link:hover .reach-go{transform:none}
+}
+
+footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
+  justify-content:space-between;font-family:var(--mono);font-size:.72rem;
+  letter-spacing:.08em;color:var(--ink-3)}
+
+
+
+/* ── the memory palace: a second sticky stage, right-hand side ───────────
+   Mirrors the persona narrative but inverted — content left, build right —
+   and spans four sections (work → expertise → research → recognition) so the
+   castle assembles across the whole middle of the page. */
+.palace-wrap{position:relative}
+.palace-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.66fr);
+  gap:clamp(1rem,2.5vw,2.5rem);align-items:start;max-width:var(--maxw);
+  margin-inline:auto;padding-inline:var(--pad)}
+.palace-col{position:sticky;top:58px;height:calc(100vh - 58px);
+  display:flex;align-items:center;justify-content:center;pointer-events:none}
+.palace-stage{position:relative;width:100%;aspect-ratio:3/4;
+  max-height:calc(100vh - 10rem);margin-inline:auto}
+.palace-stage > img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;visibility:hidden;opacity:0}
+.palace-stage > img.on{visibility:visible;opacity:1}
+.palace-glow{position:absolute;inset:10% 4% 6%;z-index:-1;border-radius:50%;
+  background:radial-gradient(ellipse at 50% 55%,var(--accent-soft),transparent 70%);
+  filter:blur(34px);transition:background .6s ease}
+/* the bands inside the rail lose their own width cap — the grid owns it now */
+.palace-grid .band{border-top:1px solid var(--rule)}
+.palace-grid .band > .wrap{padding-inline:0;max-width:none}
+.palace-grid .band:first-child{border-top:0}
+.palace-caption{position:absolute;left:0;right:0;bottom:-.25rem;text-align:center;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);transition:color .4s ease}
+
+/* ── the rail is a narrow column, so the full-bleed section rhythm is
+   recalibrated inside it: tighter bands, smaller display type, and grids
+   that are told how many columns to hold instead of guessing ───────── */
+@media(min-width:1001px){
+  .palace-grid .band{padding-block:clamp(2.5rem,4.5vw,4rem)}
+  .palace-grid .band-head{margin-bottom:1.75rem}
+  /* a rail headline is a rail headline, not a full-bleed statement */
+  .palace-grid .band-head h2{font-size:clamp(1.6rem,1rem + 1.5vw,2.3rem)}
+
+  /* auto-fit needed 640px and the rail is ~750px: state the two columns */
+  .palace-grid .cards{grid-template-columns:repeat(2,minmax(0,1fr));
+    column-gap:2rem;align-items:start}
+  .palace-grid .cards .card{padding:1.3rem 1.5rem 1.5rem 0}
+  /* five cards in two columns leaves a hole: close the grid deliberately */
+  .palace-grid .cards .card:last-child{grid-column:1/-1;display:grid;
+    grid-template-columns:1fr 1.4fr;column-gap:2rem;row-gap:.6rem;align-items:start}
+  .palace-grid .cards .card:last-child > .no{grid-area:1/1}
+  .palace-grid .cards .card:last-child > h3{grid-area:2/1}
+  .palace-grid .cards .card:last-child > p{grid-area:1/2/3/3}
+  .palace-grid .cards .card:last-child > a.go{grid-area:3/2}
+
+  .palace-grid .depths{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .palace-grid .depth{padding:1.1rem 1rem 1.3rem 0;margin-right:1rem}
+  .palace-grid .depth:last-child{margin-right:0}
+
+  .palace-grid .awards{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .palace-grid .award{padding:1rem 1rem 1.2rem 0;margin-right:1rem}
+
+  .palace-grid .paper{grid-template-columns:9rem 1fr;gap:.6rem 1.25rem;padding:1rem 0}
+}
+
+@media(max-width:1000px){
+  .palace-grid{grid-template-columns:1fr}
+  /* opaque behind the media (see .stage-col above), fade moved below the band */
+  .palace-col{position:sticky;top:58px;height:auto;padding-block:.6rem 1.4rem;
+    background:var(--paper);z-index:20;order:-1}
+  .palace-col::after{content:"";position:absolute;left:0;right:0;top:100%;height:22px;
+    background:linear-gradient(var(--paper),rgba(248,248,248,0));pointer-events:none}
+  /* a quarter of the screen, not half — the scrub is barely legible at this
+     width and it was costing six screenfuls of reading room */
+  .palace-stage{max-height:26vh;width:min(100%,11rem);margin-inline:auto}
+  /* the caption drops into the band's own opaque padding instead of printing
+     itself over whatever paragraph happens to be underneath */
+  .palace-caption{bottom:-1.15rem}
+  /* jumping to WORK/EXPERTISE/RESEARCH must clear the pinned tower */
+  .palace-grid section{scroll-margin-top:calc(58px + 26vh + 2.75rem)}
+}
+
+/* ── single-column cleanup ─────────────────────────────
+   several gutters are declared as right margin/padding on the item rather
+   than as grid gap, so they survive the collapse to one column and leave the
+   hairline rules stopping short of the text edge (and alternating length,
+   because :last-child resets some of them). */
+@media(max-width:640px){
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .depth,.award{margin-right:0}
+  .card{padding-right:0}
+}
+
+
+
+
+/* ── the gap: full-bleed film with the quote reversed out ────────────
+   The one section on the page with no other visual, so the film gets a
+   moment where nothing competes with it. Text sits on a dark scrim, not
+   raw footage, so contrast holds whatever frame is on screen. */
+.gap{position:relative;isolation:isolate;overflow:hidden;
+  padding-block:clamp(5rem,14vw,10rem);background:#0E0E12;border-block:0}
+.gap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  z-index:-2;opacity:0;transition:opacity 1.4s ease}
+.gap video.on{opacity:.62}
+.gap::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(92deg,rgba(14,14,18,.88) 0 42%,rgba(14,14,18,.55) 78%,rgba(14,14,18,.42) 100%)}
+.gap .part{color:rgba(255,255,255,.62)}
+.gap .part::before{background:#fff;opacity:.5}
+.gap blockquote{color:#fff;max-width:24ch}
+.gap blockquote em{color:#7FD4DE}
+@media(max-width:900px){
+  .gap{padding-block:clamp(3.5rem,11vw,6rem)}
+  .gap::after{background:linear-gradient(rgba(14,14,18,.86),rgba(14,14,18,.7))}
+}
+
+/* ── reveal ───────────────────────────────────────────── */
+.rise{opacity:0;transform:translateY(18px)}
+.rise.in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
+.rise.in.d1{transition-delay:.06s}.rise.in.d2{transition-delay:.12s}
+.rise.in.d3{transition-delay:.18s}.rise.in.d4{transition-delay:.24s}
+
+/* hero entrance: staggered, spring-ish, matching the shadcn feel */
+@keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero .part,.hero h1,.hero .lede,.hero .chips,.hero .cta,.hero-fig{
+  animation:riseIn .62s cubic-bezier(.22,1.2,.36,1) both}
+.hero h1{animation-delay:.06s}
+.hero .lede{animation-delay:.13s}
+.hero-fig{animation-delay:.13s}
+.hero .chips{animation-delay:.2s}
+.hero .cta{animation-delay:.27s}
+
+.scrollcue{
+  position:absolute;left:50%;bottom:1.1rem;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.45rem;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-3);opacity:0;animation:riseIn .6s ease .9s both;pointer-events:none}
+.scrollcue svg{width:1.05rem;height:1.05rem;animation:nudge 1.9s ease-in-out 1.6s infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media(max-width:900px){.scrollcue{display:none}}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important}
+  .rise{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header id="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top"><i></i>F.M. Delgado-Chaves</a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#research">Research</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="rail" aria-hidden="true" id="rail"></div>
+
+<main id="main">
+<div id="top"></div>
+
+<!-- ══ HERO ══════════════════════════════════════════ -->
+<section class="hero grid-bg" data-band="teal">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="part rise">AI engineer · Life sciences<span class="status"><b></b>Open to new roles</span></p>
+      <h1 class="rise d1">Fernando M.<span>Delgado-Chaves</span></h1>
+      <p class="lede rise d2">I build <strong>AI systems that do real science</strong> — grounded in a decade of computational biology, proven in shipped products, and inspectable at every step.</p>
+      <div class="chips rise d3" style="margin-top:2rem">
+        <div class="chip"><small>Now</small><b>Co-Founder &amp; CTO · Galagos</b></div>
+        <div class="chip"><small>Record</small><b>424 citations · h-index 7</b></div>
+        <div class="chip"><small>Doctorate</small><b>PhD · summa cum laude</b></div>
+      </div>
+      <div class="cta rise d4">
+        <a class="btn btn-solid" href="#work">Selected work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-line" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-fig rise d2">
+      <img class="portrait" src="media/portrait-512.webp"
+           srcset="media/portrait-512.webp 1x, media/portrait-1024.webp 2x"
+           width="512" height="512"
+           alt="Portrait of Fernando M. Delgado-Chaves"
+           fetchpriority="high" decoding="async">
+    </div>
+  </div>
+  <div class="scrollcue" aria-hidden="true">Scroll
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </div>
+</section>
+
+<!-- ══ THE GAP ═══════════════════════════════════════ -->
+<section class="gap" data-band="teal">
+  <video id="gapFilm" muted loop playsinline preload="none" aria-hidden="true"
+         poster="media/hero/hero-poster.jpg" width="960" height="540"></video>
+  <div class="wrap">
+    <p class="part rise" style="margin-bottom:1.4rem">02 — The gap</p>
+    <blockquote class="rise d1">Industrial-scale data generation, <em>artisanal-scale</em> analysis. My work closes that gap — without giving up rigor.</blockquote>
+  </div>
+</section>
+
+<!-- ══ THE BUILD (sticky stage + 4 chapters) ═════════ -->
+<section class="narrative" id="build" aria-label="Four professional dimensions">
+  <div class="wrap narr-grid">
+
+    <div class="stage-col">
+      <div class="stage" id="stage">
+        <div class="stage-glow" id="glow"></div>
+        <img data-still="0" class="on" src="media/01-bioinformatician-scientist.webp"
+             srcset="media/01-bioinformatician-scientist-sm.webp 600w, media/01-bioinformatician-scientist.webp 1200w"
+             sizes="(max-width:900px) 100vw, 45vw"
+             width="1200" height="900" alt="Bioinformatician and scientist build: lab coat, microscope, teal molecular network." decoding="async">
+        <img data-clip="0" data-seq="media/frames/01-science-to-ai" alt="" aria-hidden="true">
+        <img data-still="1" src="media/02-ai-engineer.webp"
+             srcset="media/02-ai-engineer-sm.webp 600w, media/02-ai-engineer.webp 1200w"
+             sizes="(max-width:900px) 100vw, 45vw"
+             width="1200" height="900" alt="AI engineer build: navy circuit-print outfit, laptop, server stack and a branching blue agent structure." decoding="async" loading="lazy">
+        <img data-clip="1" data-seq="media/frames/02-ai-to-founder" alt="" aria-hidden="true">
+        <img data-still="2" src="media/03-founder.webp"
+             srcset="media/03-founder-sm.webp 600w, media/03-founder.webp 1200w"
+             sizes="(max-width:900px) 100vw, 45vw"
+             width="1200" height="900" alt="Founder build: amber and graphite engine with gears, prototype desk and a metrics display." decoding="async" loading="lazy">
+        <img data-clip="2" data-seq="media/frames/03-founder-to-communicator" alt="" aria-hidden="true">
+        <img data-still="3" src="media/04-communicator-mentor.webp"
+             srcset="media/04-communicator-mentor-sm.webp 600w, media/04-communicator-mentor.webp 1200w"
+             sizes="(max-width:900px) 100vw, 45vw"
+             width="1200" height="900" alt="Communicator and mentor build: microphone, teaching screen and violet radiating signal arcs." decoding="async" loading="lazy">
+      </div>
+    </div>
+
+    <div class="chapters" id="chapters">
+
+      <article class="chapter" data-act="0" data-accent="teal" id="dimension-1">
+        <p class="part">03 — The bioinformatician &amp; scientist</p>
+        <h2>Signal, pulled from <em>complexity</em>.</h2>
+        <p>For three years I led network-medicine drug repurposing inside <strong>REPO4EU</strong>, the EU consortium (grant No. 101057619), with an emphasis on infectious disease — building the multi-omics pipelines that turn disease modules into drug candidates, alongside groups at TU Munich, Vienna and Harvard.</p>
+        <p>Former Junior Group Leader for Generative AI for Medicine at the University of Hamburg, on a summa cum laude PhD and three master’s degrees. I review for <em class="prose">Scientific Reports</em>, <em class="prose">PeerJ</em> and the <em class="prose">Journal of the Royal Society Interface</em>, and have served as external examiner on three doctoral committees — Madrid, Granada and Seville.</p>
+        <div class="facts">
+          <span class="fact">Network medicine</span>
+          <span class="fact">Multi-omics</span>
+          <span class="fact">Drug repurposing</span>
+          <span class="fact">Peer reviewer</span>
+        </div>
+      </article>
+
+      <article class="chapter" data-act="1" data-accent="blue" id="dimension-2">
+        <p class="part">04 — The AI engineer</p>
+        <h2>Agentic systems that do real <em>science</em>.</h2>
+        <p>I built my first conversational agent for disease-module discovery and drug repurposing in 2022 — the direct precursor of ChatDRex — years before “agentic” became a category. The same discipline ships today as 250+ reusable agent skills, self-healing code and model-agnostic orchestration.</p>
+        <div class="facts">
+          <span class="fact">LLM agents</span>
+          <span class="fact">LangGraph</span>
+          <span class="fact">RAG &amp; hallucination control</span>
+          <span class="fact">Benchmark design</span>
+        </div>
+      </article>
+
+      <article class="chapter" data-act="2" data-accent="amber" id="dimension-3">
+        <p class="part">05 — The founder</p>
+        <h2>Ownership of the <em>whole engine</em>.</h2>
+        <p>Unusually for a CTO, I also run the commercial engine — founder-led sales, marketing, and the non-dilutive grant strategy behind approximately €234K in public funding. The team was selected into <strong>Antler’s</strong> inaugural Continental Europe residency in Berlin, a cohort billed at roughly the top 0.2% of applicants, where the idea was pressure-tested without taking investment.</p>
+        <div class="facts">
+          <span class="fact">≈ €234K non-dilutive</span>
+          <span class="fact">Founder-led sales</span>
+          <span class="fact">Antler residency</span>
+        </div>
+      </article>
+
+      <article class="chapter" data-act="3" data-accent="violet" id="dimension-4">
+        <p class="part">06 — The communicator &amp; mentor</p>
+        <h2>Making complex science <em>legible</em>.</h2>
+        <p>I sit on the board of <strong>IABioMed</strong>, the Spanish Society for AI in Biomedicine, as Head of Communications. I taught a 12-session graduate course in systems medicine at the University of Hamburg, have mentored roughly 19 students, and take my seminar <em class="prose">Your Research, Supercharged</em> to institutes across Europe — in English and Spanish.</p>
+        <div class="facts">
+          <span class="fact">IABioMed board</span>
+          <span class="fact">≈ 19 students mentored</span>
+          <span class="fact">EN · ES · DE</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ THE MEMORY PALACE (sections 07–10 share one sticky build) ══ -->
+<div class="palace-wrap" id="palace">
+  <div class="palace-grid">
+    <div class="palace-content">
+<!-- ══ WORK ══════════════════════════════════════════ -->
+<section class="band" id="work" data-band="blue">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="part rise">07 — Selected work</p>
+      <h2 class="rise d1">Products &amp; tools that <em>shipped</em>.</h2>
+      <p class="rise d2">Live demos, published algorithms, and open-source packages — each with public proof.</p>
+    </div>
+    <div class="cards">
+      <article class="card rise">
+        <span class="no">01</span>
+        <h3>Galagos <small>Co-Founder · CTO</small></h3>
+        <p>An agentic “virtual bioinformatician.” As of 2026, Galagos scored 92% on BixBench-Verified-50 (tied top of the public leaderboard); is an NVIDIA Inception member; and secured approximately €234K in non-dilutive public grants.</p>
+        <a class="go" href="https://galagos.ai" target="_blank" rel="noopener">2025 — now ↗</a>
+      </article>
+      <article class="card rise d1">
+        <span class="no">02</span>
+        <h3>ChatDRex <small>Concept · Co-senior author</small></h3>
+        <p>A conversational, multi-agent drug-repurposing engine curated by the REPO4EU consortium — built by the Master’s students I supervised, on the conversational agent I had prototyped in 2022. One of three co-senior authors; manuscript under review.</p>
+        <a class="go" href="https://arxiv.org/abs/2511.21438" target="_blank" rel="noopener">Preprint ↗</a>
+      </article>
+      <article class="card rise d2">
+        <span class="no">03</span>
+        <h3>AcadeMate <small>Author</small></h3>
+        <p>AI for systematic-review literature screening — the applied companion to my first-author PNAS work on LLMs in evidence synthesis.</p>
+        <a class="go" href="https://github.com/fmdelgado/academatepy" target="_blank" rel="noopener">GitHub ↗</a>
+      </article>
+      <article class="card rise">
+        <span class="no">04</span>
+        <h3>DRaCOoN <small>First author</small></h3>
+        <p>A novel algorithm for pathway-level differential co-expression analysis in transcriptomics. Published in BMC Bioinformatics (2025); open source.</p>
+        <a class="go" href="https://link.springer.com/article/10.1186/s12859-025-06162-9" target="_blank" rel="noopener">BMC Bioinf. ↗</a>
+      </article>
+      <article class="card rise d1">
+        <span class="no">05</span>
+        <h3>EnGNet / pyEnGNet <small>Algorithm creator · pyEnGNet contributor</small></h3>
+        <p>Ensemble gene co-expression network reconstruction, later GPU-accelerated — the algorithm behind my PhD, and a registered patent.</p>
+        <a class="go" href="https://github.com/aureliolfdez/pyengnet" target="_blank" rel="noopener">pyEnGNet ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERTISE ═════════════════════════════════════ -->
+<section class="band" id="expertise" data-band="teal">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="part rise">08 — Expertise</p>
+      <h2 class="rise d1">Three technical <em>depths</em>.</h2>
+    </div>
+    <div class="depths">
+      <div class="depth rise">
+        <span class="no">01</span>
+        <h3>Agentic AI</h3>
+        <p>LLM scientific agents; LangGraph and multi-agent systems; RAG and hallucination control; evaluation and benchmark design.</p>
+      </div>
+      <div class="depth rise d1">
+        <span class="no">02</span>
+        <h3>Computational biology</h3>
+        <p>Network reconstruction; differential co-expression; drug repurposing; multi-omics and biclustering.</p>
+      </div>
+      <div class="depth rise d2">
+        <span class="no">03</span>
+        <h3>Production systems</h3>
+        <p>Python and R; GPU-accelerated pipelines; Nextflow and HPC; model-agnostic architecture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RESEARCH ══════════════════════════════════════ -->
+<section class="band" id="research" data-band="teal">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="part rise">09 — Research</p>
+      <h2 class="rise d1">Peer-reviewed <em>credibility</em>.</h2>
+      <p class="rise d2" style="font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;color:var(--ink-3)">Google Scholar · verified 1 July 2026</p>
+    </div>
+    <div class="metrics rise">
+      <div class="metric"><b>424</b><span>Citations</span></div>
+      <div class="metric"><b>7</b><span>h-index</span></div>
+      <div class="metric"><b>27</b><span>Works</span></div>
+      <div class="metric"><b>2</b><span>Nature / PNAS</span></div>
+    </div>
+    <div class="papers">
+      <article class="paper rise">
+        <p class="venue">PNAS · 2025</p>
+        <div><h3>Transforming literature screening: the emerging role of large language models in systematic reviews</h3><p class="role">First author · approximately 117 citations</p></div>
+      </article>
+      <article class="paper rise">
+        <p class="venue">Nature · 2025</p>
+        <div><h3>Pathology-oriented multiplexing enables integrative disease mapping</h3><p class="role">Contributing co-author</p></div>
+      </article>
+      <article class="paper rise">
+        <p class="venue">BMC Bioinformatics · 2025</p>
+        <div><h3>DRaCOoN: pathway-level differential co-expression analysis in transcriptomics</h3><p class="role">First author</p></div>
+      </article>
+      <article class="paper rise">
+        <p class="venue">Artificial Intelligence in Medicine · 2019</p>
+        <div><h3>Computational methods for gene regulatory network reconstruction: a review</h3><p class="role">Most-cited · approximately 217 citations</p></div>
+      </article>
+      <article class="paper rise">
+        <p class="venue">Nucleic Acids Research · 2021</p>
+        <div><h3>Role of a cryptic tRNA gene operon in survival under translational stress</h3><p class="role">Co-author</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RECOGNITION ═══════════════════════════════════ -->
+<section class="band" id="recognition" data-band="amber">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="part rise">10 — Recognition</p>
+      <h2 class="rise d1">Awards, talks &amp; a <em>public point of view</em>.</h2>
+    </div>
+    <div class="awards">
+      <article class="award rise"><p class="yr">2023</p><h3>Young Investigator Award</h3><p>REPO4EU</p></article>
+      <article class="award rise d1"><p class="yr">2023</p><h3>Best Talk — RExPO’23</h3><p>Stockholm</p></article>
+      <article class="award rise d2"><p class="yr">2022</p><h3>Top 3 Speaker — RExPO’22</h3><p>Maastricht</p></article>
+      <article class="award rise"><p class="yr">2026</p><h3>Deep Tech Momentum · DTM100</h3><p>Berlin</p></article>
+      <article class="award rise d1"><p class="yr">2026</p><h3>Falling Walls Venture — nominated</h3><p>Pending</p></article>
+      <article class="award rise d2"><p class="yr">Series</p><h3>“Your Research, Supercharged” — solo seminar</h3><p>MPI · CSSB</p></article>
+    </div>
+  </div>
+</section>
+    </div>
+    <div class="palace-col">
+      <div class="palace-stage" id="palaceStage">
+        <div class="palace-glow"></div>
+        <img id="palaceImg" class="on" src="media/palace/frames/000.webp?v=3" width="720" height="960"
+             alt="A tall LEGO tower assembling from its parts: a microscope and molecule at the base,
+                  a DNA helix and server racks in the middle, gears, books and a microphone above,
+                  and a rocket at the summit."
+             decoding="async">
+        <p class="palace-caption" id="palaceCap">Scattered parts</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONTACT ═══════════════════════════════════════ -->
+<section class="contact studs" id="contact" data-band="violet">
+  <div class="wrap">
+    <p class="part rise">11 — Contact</p>
+    <h2 class="rise d1">Let’s build something <em>legible</em>.</h2>
+    <div class="reach rise d2">
+
+      <!-- primary target: the address is visible, and copyable in one tap -->
+      <div class="reach-primary">
+        <a class="reach-mail" href="mailto:ferdecha@gmail.com?subject=Hello%20from%20your%20site">
+          <span class="reach-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </span>
+          <span class="reach-txt">
+            <b>Email me</b>
+            <span class="reach-sub">ferdecha@gmail.com</span>
+          </span>
+          <span class="reach-go">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+            </svg>
+          </span>
+        </a>
+
+        <button class="reach-copy" type="button" data-copy="ferdecha@gmail.com">
+          <svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="8" y="8" width="14" height="14" rx="2"/>
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+          </svg>
+          <svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg>
+          <span class="reach-copy-label">Copy</span>
+        </button>
+      </div>
+
+      <!-- profiles -->
+      <div class="reach-grid">
+
+        <a class="reach-link" href="https://www.linkedin.com/in/fernando-delgado-chaves" target="_blank" rel="noopener">
+          <span class="reach-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </span>
+          <span class="reach-txt">
+            <b>LinkedIn</b>
+            <span class="reach-sub">fernando-delgado-chaves</span>
+          </span>
+          <span class="reach-go">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </span>
+          <span class="sr-only">(opens in a new tab)</span>
+        </a>
+
+        <a class="reach-link" href="https://scholar.google.com/citations?user=LT3VzUgAAAAJ" target="_blank" rel="noopener">
+          <span class="reach-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M21.4 10.92a1 1 0 0 0 0-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/>
+              <path d="M22 10v6"/>
+              <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+            </svg>
+          </span>
+          <span class="reach-txt">
+            <b>Google Scholar</b>
+            <span class="reach-sub">Papers &amp; citations</span>
+          </span>
+          <span class="reach-go">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </span>
+          <span class="sr-only">(opens in a new tab)</span>
+        </a>
+
+        <a class="reach-link" href="https://orcid.org/0000-0002-6171-1215" target="_blank" rel="noopener">
+          <span class="reach-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </span>
+          <span class="reach-txt">
+            <b>ORCID</b>
+            <span class="reach-sub">0000-0002-6171-1215</span>
+          </span>
+          <span class="reach-go">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </span>
+          <span class="sr-only">(opens in a new tab)</span>
+        </a>
+
+        <a class="reach-link" href="https://github.com/fmdelgado" target="_blank" rel="noopener">
+          <span class="reach-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.4.5-.7 1.1-.8 1.7-.1.6-.1 1.3 0 1.9v4"/>
+              <path d="M9 18c-4.51 2-5-2-7-2"/>
+            </svg>
+          </span>
+          <span class="reach-txt">
+            <b>GitHub</b>
+            <span class="reach-sub">@fmdelgado</span>
+          </span>
+          <span class="reach-go">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </span>
+          <span class="sr-only">(opens in a new tab)</span>
+        </a>
+
+      </div>
+
+      <!-- metadata: where, and in which timezone -->
+      <p class="reach-meta">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Hamburg &middot; Seville
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+          </svg>
+          Central European Time
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M5 8h14"/><path d="M5 12h9"/><path d="M5 16h5"/>
+          </svg>
+          EN &middot; ES &middot; DE
+        </span>
+      </p>
+
+      <span class="sr-only" role="status" aria-live="polite" id="reachStatus"></span>
+    </div>
+    <footer>
+      <span>© 2026 Fernando M. Delgado-Chaves</span>
+      <span>Built brick by brick</span>
+    </footer>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* one-tap copy for the email address — graceful fallback on non-HTTPS and
+   older browsers, announced through the role="status" region in the markup */
+(function(){
+  var btn = document.querySelector('.reach-copy'); if (!btn) return;
+  var live = document.getElementById('reachStatus'), t;
+  var label = btn.querySelector('.reach-copy-label');
+  btn.addEventListener('click', function(){
+    var v = btn.getAttribute('data-copy');
+    function done(){
+      btn.classList.add('done');
+      label.textContent = 'Copied';
+      if (live) live.textContent = v + ' copied to clipboard';
+      clearTimeout(t);
+      t = setTimeout(function(){
+        btn.classList.remove('done');
+        label.textContent = 'Copy';
+        if (live) live.textContent = '';
+      }, 2400);
+    }
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = v; ta.setAttribute('readonly','');
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(v).then(done, fallback);
+    } else { fallback(); }
+  });
+})();
+</script>
+<script>
+(function(){
+  'use strict';
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ── header hairline ─────────────────────────────── */
+  var hdr = document.getElementById('hdr');
+  addEventListener('scroll', function(){
+    hdr.classList.toggle('stuck', scrollY > 8);
+  }, {passive:true});
+
+  /* ── reveal on scroll ────────────────────────────── */
+  var rises = document.querySelectorAll('.rise');
+  if (reduce.matches) {
+    rises.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var ro = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.04});
+    rises.forEach(function(el){ ro.observe(el); });
+  }
+
+
+
+
+  /* ── the gap film: loads when it nears the viewport, never on phones ── */
+  (function(){
+    var v = document.getElementById('gapFilm');
+    if (!v) return;
+    var poster = v.getAttribute('poster');
+    if (reduce.matches || innerWidth < 901) {          /* still frame, no fetch */
+      v.style.cssText += ';background-image:url(' + poster + ');background-size:cover;background-position:center;opacity:.5';
+      v.classList.add('on');
+      return;
+    }
+    var RATE = 0.5;                                    /* one number: pace of the film */
+    new IntersectionObserver(function(es, o){
+      if (!es[0].isIntersecting) return;
+      o.disconnect();
+      v.src = 'media/hero/hero-loop-web.mp4';
+      v.load();
+      var go = v.play();
+      if (go && go.catch) go.catch(function(){});
+      ['loadedmetadata','play'].forEach(function(e){
+        v.addEventListener(e, function(){ v.playbackRate = RATE; });
+      });
+      v.addEventListener('playing', function(){ v.classList.add('on'); }, {once:true});
+    }, {rootMargin:'50% 0px'}).observe(v);
+  })();
+
+  /* ── the memory palace: assembles across sections 07–10 ── */
+  (function(){
+    var img = document.getElementById('palaceImg');
+    var wrap = document.getElementById('palace');
+    var cap = document.getElementById('palaceCap');
+    if (!img || !wrap) return;
+    var FRAMES = 64, VER = '?v=3', BASE = 'media/palace/frames/';
+    var pad = function(n){ return n < 10 ? '00' + n : (n < 100 ? '0' + n : '' + n); };
+    var CAPTIONS = [[0,'Scattered parts'],[.22,'Foundations'],[.45,'The spine rises'],
+                    [.65,'Science docks'],[.82,'Engine and voice'],[.95,'Everything I build with']];
+
+    var ready = false, store = [];
+    new IntersectionObserver(function(es){
+      if (es[0].isIntersecting && !ready) {
+        ready = true;
+        for (var n = 0; n < FRAMES; n++) {
+          var im = new Image();
+          im.onload = onScroll;
+          im.src = BASE + pad(n) + '.webp' + VER;
+          store.push(im);
+        }
+      }
+    }, {rootMargin:'60% 0px'}).observe(wrap);
+
+    var lastIdx = -1, queued = false;
+    function paint(){
+      queued = false;
+      var r = wrap.getBoundingClientRect();
+      /* progress across the whole rail, measured against the sticky viewport */
+      var span = r.height - innerHeight;
+      var t = span > 0 ? (-r.top) / span : (r.top < 0 ? 1 : 0);
+      t = Math.max(0, Math.min(1, t));
+      var idx = Math.round(t * (FRAMES - 1));
+      var f = store[idx];
+      if (idx !== lastIdx && f && f.complete && f.naturalWidth) {
+        lastIdx = idx;
+        img.src = f.src;
+        if (cap) {
+          for (var i = CAPTIONS.length - 1; i >= 0; i--) {
+            if (t >= CAPTIONS[i][0]) { cap.textContent = CAPTIONS[i][1]; break; }
+          }
+        }
+      }
+    }
+    function onScroll(){ if (!queued) { queued = true; requestAnimationFrame(paint); } }
+    addEventListener('scroll', onScroll, {passive:true});
+    addEventListener('resize', onScroll, {passive:true});
+    paint();
+  })();
+
+  /* ── the build: scroll-scrubbed persona narrative ── */
+  var ACCENTS = {
+    teal:  ['#0B6C78','rgba(11,108,120,.10)'],
+    blue:  ['#0050B6','rgba(0,80,182,.10)'],
+    amber: ['#C57A0B','rgba(197,122,11,.11)'],
+    violet:['#643E8F','rgba(100,62,143,.10)']
+  };
+  var bands = Array.prototype.slice.call(document.querySelectorAll('[data-band]'));
+  var narrative = document.getElementById('build');
+  var chapters = Array.prototype.slice.call(document.querySelectorAll('.chapter'));
+  var stills   = Array.prototype.slice.call(document.querySelectorAll('[data-still]'));
+  var clips    = Array.prototype.slice.call(document.querySelectorAll('[data-clip]'));
+  var stage    = document.getElementById('stage');
+  var rail     = document.getElementById('rail');
+  var root     = document.documentElement;
+
+  /* progress rail buttons */
+  chapters.forEach(function(ch, i){
+    var b = document.createElement('button');
+    b.innerHTML = '<i></i>';
+    b.setAttribute('aria-label', 'Go to ' + (ch.querySelector('h2') ? ch.querySelector('h2').textContent.trim() : 'section ' + (i+1)));
+    b.addEventListener('click', function(){ ch.scrollIntoView({behavior: reduce.matches ? 'auto' : 'smooth', block:'center'}); });
+    rail.appendChild(b);
+  });
+  var railBtns = Array.prototype.slice.call(rail.querySelectorAll('button'));
+
+  function setAccent(name){
+    var a = ACCENTS[name]; if (!a) return;
+    root.style.setProperty('--accent', a[0]);
+    root.style.setProperty('--accent-soft', a[1]);
+  }
+
+  /* Each transition is a 96-frame alpha WebP sequence rather than a video:
+     this ffmpeg build cannot write VP9 alpha and H.264 has no alpha at all,
+     and a sequence also lands on exact frames while scrubbing. */
+  var FRAMES = 64;
+  var pad = function(n){ return n < 10 ? '00' + n : (n < 100 ? '0' + n : '' + n); };
+  var loaded = false, cache = [];
+  var lazy = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting && !loaded) {
+        loaded = true;
+        clips.forEach(function(el, ci){
+          var base = el.dataset.seq;
+          cache[ci] = [];
+          for (var n = 0; n < FRAMES; n++) {
+            var im = new Image();
+            im.onload = onScroll;                 /* repaint as frames land */
+            im.src = base + '/' + pad(n) + '.webp?v=3';
+            cache[ci].push(im);                   /* retained: never collected */
+          }
+          el.src = cache[ci][0].src;
+        });
+        lazy.disconnect();
+      }
+    });
+  }, {rootMargin:'80% 0px'});
+  lazy.observe(document.getElementById('build'));
+
+  var shown = null;
+  function show(el){
+    if (shown === el) return;
+    stills.concat(clips).forEach(function(n){ n.classList.toggle('on', n === el); });
+    shown = el;
+  }
+
+  /* story position: 0 = persona 1 settled … 3 = persona 4 settled */
+  function storyPosition(){
+    var mid = innerHeight * 0.5;
+    var centers = chapters.map(function(ch){
+      var r = ch.getBoundingClientRect();
+      return r.top + r.height / 2;
+    });
+    if (centers[0] >= mid) return 0;
+    if (centers[centers.length-1] <= mid) return centers.length - 1;
+    for (var i = 0; i < centers.length - 1; i++) {
+      if (centers[i] <= mid && centers[i+1] >= mid) {
+        var span = centers[i+1] - centers[i];
+        return i + (span > 0 ? (mid - centers[i]) / span : 0);
+      }
+    }
+    return 0;
+  }
+
+  var HOLD = 0.14;         /* dead-zone at each end, mirrors the clips' still holds */
+  var lastSeek = [-1,-1,-1];
+  var ticking = false;
+
+  function frame(){
+    ticking = false;
+    var mid = innerHeight * 0.5;
+    var nr = narrative.getBoundingClientRect();
+    var inBuild = nr.top < mid && nr.bottom > mid;
+
+    /* outside the build, the accent belongs to whichever band owns the viewport
+       middle — the colour system keeps meaning instead of freezing on violet */
+    rail.style.opacity = inBuild ? '1' : '0';
+    rail.style.pointerEvents = inBuild ? '' : 'none';
+    if (!inBuild) {
+      var owner = null;
+      for (var b = 0; b < bands.length; b++) {
+        var br = bands[b].getBoundingClientRect();
+        if (br.top <= mid && br.bottom >= mid) { owner = bands[b]; break; }
+      }
+      if (owner) setAccent(owner.dataset.band);
+      else if (nr.bottom <= mid) setAccent('violet');
+      else setAccent('teal');
+      return;
+    }
+
+    var p = storyPosition();
+    var i = Math.min(Math.floor(p), chapters.length - 1);
+    var f = p - i;
+
+    /* accent + rail follow the nearest settled persona */
+    var nearest = Math.round(p);
+    setAccent(chapters[nearest].dataset.accent);
+    railBtns.forEach(function(b, n){ b.setAttribute('aria-current', n === nearest ? 'true' : 'false'); });
+
+    var clip = clips[i];
+    if (reduce.matches || !clip || f <= HOLD) {
+      show(stills[i]);
+    } else if (f >= 1 - HOLD) {
+      show(stills[Math.min(i + 1, stills.length - 1)]);
+    } else {
+      var t = (f - HOLD) / (1 - 2 * HOLD);          /* 0 … 1 across the scrub band */
+      if (loaded) {
+        /* point at the frame first, reveal second — swapping src while visible
+           would show the previously parked frame for a beat */
+        var idx = Math.max(0, Math.min(FRAMES - 1, Math.round(t * (FRAMES - 1))));
+        var c = cache[i] && cache[i][idx];
+        if (c && c.complete && c.naturalWidth) {   /* only swap to a decoded frame */
+          if (idx !== lastSeek[i]) { lastSeek[i] = idx; clip.src = c.src; }
+          show(clip);
+        } else {
+          show(stills[t < 0.5 ? i : Math.min(i + 1, stills.length - 1)]);
+        }
+      } else {
+        show(stills[t < 0.5 ? i : Math.min(i + 1, stills.length - 1)]);
+      }
+    }
+  }
+
+  function onScroll(){
+    if (!ticking) { ticking = true; requestAnimationFrame(frame); }
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', onScroll, {passive:true});
+  
+  frame();
+})();
+</script>
+</body>
+</html>
