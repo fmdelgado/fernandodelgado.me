@@ -5,16 +5,52 @@
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fernando M. Delgado-Chaves, PhD — AI Engineer for Life Sciences</title>
-<meta name="description" content="AI engineer for the life sciences. I build agentic AI systems that do real science — grounded in a decade of computational biology, proven in shipped products, inspectable at every step.">
+<meta name="description" content="I build agentic AI and LLM systems that do real science, inspectable at every step. Nine years of computational biology, 424 citations. Open to EU roles.">
 <meta name="author" content="Fernando M. Delgado-Chaves">
 <meta name="theme-color" content="#F8F8F8">
+<!-- canonical + absolute social URLs: scrapers (LinkedIn especially) cannot
+     resolve a relative og:image, and the site is served from two origins -->
+<link rel="canonical" href="https://fernandodelgado.me/">
 <meta property="og:type" content="profile">
+<meta property="og:url" content="https://fernandodelgado.me/">
+<meta property="og:site_name" content="Fernando M. Delgado-Chaves">
 <meta property="og:title" content="Fernando M. Delgado-Chaves, PhD — AI Engineer for Life Sciences">
-<meta property="og:description" content="Agentic AI systems that do real science — grounded in a decade of computational biology and proven in shipped products.">
-<meta property="og:image" content="media/share.jpg">
+<meta property="og:description" content="Agentic AI and LLM systems that do real science, inspectable at every step. Nine years of computational biology, 424 citations. Open to EU roles.">
+<meta property="og:image" content="https://fernandodelgado.me/media/share.jpg">
+<meta property="og:image:secure_url" content="https://fernandodelgado.me/media/share.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fernando M. Delgado-Chaves, PhD — AI engineer for life sciences">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fernando M. Delgado-Chaves, PhD — AI Engineer for Life Sciences">
+<meta name="twitter:description" content="Agentic AI and LLM systems that do real science, inspectable at every step. Nine years of computational biology, 424 citations. Open to EU roles.">
+<meta name="twitter:image" content="https://fernandodelgado.me/media/share.jpg">
+<!-- Person schema: gives search engines and profile scrapers one machine-readable
+     identity, and ties this page to the ORCID/Scholar/GitHub records it cites -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Fernando M. Delgado-Chaves",
+  "honorificSuffix": "PhD",
+  "jobTitle": "AI Engineer",
+  "url": "https://fernandodelgado.me/",
+  "image": "https://fernandodelgado.me/media/share.jpg",
+  "email": "ferdecha@gmail.com",
+  "sameAs": [
+    "https://www.linkedin.com/in/fernando-delgado-chaves",
+    "https://scholar.google.com/citations?user=LT3VzUgAAAAJ",
+    "https://orcid.org/0000-0002-6171-1215",
+    "https://github.com/fmdelgado"
+  ],
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ORCID",
+    "value": "0000-0002-6171-1215"
+  }
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23fff'/%3E%3Ccircle cx='20' cy='22' r='7' fill='%230B6C78'/%3E%3Ccircle cx='44' cy='22' r='7' fill='%230050B6'/%3E%3Ccircle cx='20' cy='44' r='7' fill='%23D98C13'/%3E%3Ccircle cx='44' cy='44' r='7' fill='%23643E8F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -124,22 +160,36 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
   text-decoration:none;display:flex;align-items:center;gap:.6rem;min-height:44px;padding-right:.5rem}
 .brand i{width:.62rem;height:.62rem;border-radius:50%;background:var(--accent);
   transition:background .5s ease;flex:none}
-nav{display:flex;gap:clamp(.9rem,2.2vw,2rem)}
+nav{display:flex;gap:clamp(.9rem,2.2vw,2rem);min-width:0}
 nav a{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink-2);text-decoration:none;padding:.85rem 0;position:relative;transition:color .2s;
-  display:flex;align-items:center;min-height:44px}
+  display:flex;align-items:center;min-height:44px;white-space:nowrap;flex:none}
 nav a::after{content:"";position:absolute;left:0;right:100%;bottom:.7rem;height:1.5px;
   background:var(--accent);transition:right .28s cubic-bezier(.2,.7,.3,1)}
 nav a:hover{color:var(--ink)}
 nav a:hover::after{right:0}
 /* on narrow phones reclaim the space from the brand, not from the nav —
-   four jump targets matter more than the full name in the corner */
+   five jump targets matter more than the full name in the corner */
 @media(max-width:680px){
-  .brand{font-size:0}
+  .brand{font-size:0;flex:none;min-width:44px}
   .brand::after{content:"FMDC";font-size:1rem;letter-spacing:.02em}
-  nav{gap:.7rem}
-  nav a{font-size:.68rem;letter-spacing:.06em}
-  nav a:nth-child(2),nav a:nth-child(3){display:flex}
+  nav{gap:.6rem}
+  nav a{font-size:.66rem;letter-spacing:.04em}
+  nav a:nth-child(2),nav a:nth-child(3),nav a:nth-child(4),nav a:nth-child(5){display:flex}
+}
+/* below 480px five labels cannot fit on one line at a legible size (measured:
+   the strip is 322px wide and the header gives it 322px only at 480px). Rather
+   than drop a jump target or shrink it under the 44px tap floor, the nav becomes
+   its own horizontal scroll strip — the PAGE still never scrolls sideways — with
+   a fade on the trailing edge to show there is more. Scoped to the range where it
+   genuinely overflows, so the fade never lies. */
+@media(max-width:479px){
+  nav{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;
+    -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
+    -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 1.6rem),transparent);
+    mask-image:linear-gradient(90deg,#000 calc(100% - 1.6rem),transparent);
+    padding-right:.4rem}
+  nav::-webkit-scrollbar{display:none}
 }
 
 /* ── hero ─────────────────────────────────────────────── */
@@ -166,7 +216,9 @@ nav a:hover::after{right:0}
   /* a zero-height full-basis spacer forces the wrap, so the pill keeps its
      shrink-to-fit width instead of stretching into a full-width bar */
   .part:has(.status)::after{content:"";flex-basis:100%;height:0;order:1}
-  .status{display:inline-flex;margin-left:0;margin-top:0;order:2;flex:0 0 auto}
+  /* shrink-to-fit while it fits; below that the pill wraps its own text
+     rather than pushing the page into horizontal scroll */
+  .status{display:inline-flex;margin-left:0;margin-top:0;order:2;flex:0 1 auto;max-width:100%}
 }
 
 /* the hero portrait: a real face, circular, held by the accent halo */
@@ -280,6 +332,9 @@ nav a:hover::after{right:0}
 
 /* ── generic section frame ────────────────────────────── */
 section{scroll-margin-top:72px}
+/* chapters are anchor targets too (the nav routes to #dimension-2), so they need
+   the same clearance under the sticky header */
+.chapter[id]{scroll-margin-top:72px}
 .band{padding-block:clamp(3.5rem,8vw,7rem);border-top:1px solid var(--rule)}
 .band-head{margin-bottom:clamp(2rem,4vw,3.25rem);max-width:60ch}
 .band-head h2{margin:.7rem 0 .9rem}
@@ -359,6 +414,10 @@ section{scroll-margin-top:72px}
 .reach-txt b{font-size:.95rem;font-weight:600;letter-spacing:-.01em;line-height:1.3}
 .reach-sub{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--ink-3);
   line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* one sub-label names repositories rather than a handle; it is allowed to wrap
+   instead of being ellipsed away, since the names are the point */
+.reach-sub-wrap{white-space:normal;overflow-wrap:anywhere;text-overflow:clip;
+  letter-spacing:.02em;font-size:.68rem}
 .reach-go{margin-left:auto;flex:none;display:grid;place-items:center;color:var(--ink-3);
   transition:transform .25s,color .25s}
 .reach-go svg{width:16px;height:16px;display:block}
@@ -566,16 +625,17 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a data-copy="page.a" class="skip" href="#main">Skip to content</a>
 
 <header id="hdr">
   <div class="wrap">
-    <a class="brand" href="#top"><i></i>F.M. Delgado-Chaves</a>
+    <a data-copy="hdr.a" class="brand" href="#top"><i></i>F.M. Delgado-Chaves</a>
     <nav>
-      <a href="#work">Work</a>
-      <a href="#expertise">Expertise</a>
-      <a href="#research">Research</a>
-      <a href="#contact">Contact</a>
+      <a data-copy="nav.a5" href="#dimension-2">AI engineering</a>
+      <a data-copy="nav.a" href="#work">Work</a>
+      <a data-copy="nav.a2" href="#expertise">Expertise</a>
+      <a data-copy="nav.a3" href="#research">Research</a>
+      <a data-copy="nav.a4" href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -589,18 +649,18 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 <section class="hero grid-bg" data-band="teal">
   <div class="wrap hero-grid">
     <div>
-      <p class="part rise">AI engineer · Life sciences<span class="status"><b></b>Open to new roles</span></p>
-      <h1 class="rise d1">Fernando M.<span>Delgado-Chaves</span></h1>
-      <p class="lede rise d2">I build <strong>AI systems that do real science</strong> — grounded in a decade of computational biology, proven in shipped products, and inspectable at every step.</p>
+      <p data-copy="section.p" class="part rise">AI engineer · Agentic systems<span class="status"><b></b>Open to Applied AI and forward-deployed roles, EU</span></p>
+      <h1 data-copy="section.h1" class="rise d1">Fernando M.<span>Delgado-Chaves</span></h1>
+      <p data-copy="section.p2" class="lede rise d2">I build <strong>agentic AI systems that do real science</strong>, grounded in nine years of computational biology, measured against public benchmarks, and inspectable at every step.</p>
       <div class="chips rise d3" style="margin-top:2rem">
-        <div class="chip"><small>Now</small><b>Co-Founder &amp; CTO · Galagos</b></div>
-        <div class="chip"><small>Record</small><b>424 citations · h-index 7</b></div>
-        <div class="chip"><small>Doctorate</small><b>PhD · summa cum laude</b></div>
+        <div class="chip"><small data-copy="section.small">Most recent</small><b>Co-Founder &amp; CTO · Galagos</b></div>
+        <div class="chip"><small data-copy="section.small2">Record</small><b>424 citations · h-index 7</b></div>
+        <div class="chip"><small data-copy="section.small3">Doctorate</small><b>PhD · summa cum laude</b></div>
       </div>
       <div class="cta rise d4">
         <a class="btn btn-solid" href="#work">Selected work
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-line" href="#contact">Get in touch</a>
+        <a data-copy="section.a" class="btn btn-line" href="#contact">Get in touch</a>
       </div>
     </div>
     <div class="hero-fig rise d2">
@@ -621,8 +681,8 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
   <video id="gapFilm" muted loop playsinline preload="none" aria-hidden="true"
          poster="media/hero/hero-poster.jpg" width="960" height="540"></video>
   <div class="wrap">
-    <p class="part rise" style="margin-bottom:1.4rem">02 — The gap</p>
-    <blockquote class="rise d1">Industrial-scale data generation, <em>artisanal-scale</em> analysis. My work closes that gap — without giving up rigor.</blockquote>
+    <p data-copy="section.p3" class="part rise" style="margin-bottom:1.4rem">02 · The gap</p>
+    <blockquote data-copy="section.blockquote" class="rise d1">Industrial-scale data generation, <em>artisanal-scale</em> analysis. Teams are not slow, they are overwhelmed. I build the agents that take that queue on.</blockquote>
   </div>
 </section>
 
@@ -658,49 +718,49 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
     <div class="chapters" id="chapters">
 
       <article class="chapter" data-act="0" data-accent="teal" id="dimension-1">
-        <p class="part">03 — The bioinformatician &amp; scientist</p>
-        <h2>Signal, pulled from <em>complexity</em>.</h2>
-        <p>For three years I led network-medicine drug repurposing inside <strong>REPO4EU</strong>, the EU consortium (grant No. 101057619), with an emphasis on infectious disease — building the multi-omics pipelines that turn disease modules into drug candidates, alongside groups at TU Munich, Vienna and Harvard.</p>
-        <p>Former Junior Group Leader for Generative AI for Medicine at the University of Hamburg, on a summa cum laude PhD and three master’s degrees. I review for <em class="prose">Scientific Reports</em>, <em class="prose">PeerJ</em> and the <em class="prose">Journal of the Royal Society Interface</em>, and have served as external examiner on three doctoral committees — Madrid, Granada and Seville.</p>
+        <p data-copy="dimension-1.p" class="part">03 · The bioinformatician &amp; scientist</p>
+        <h2 data-copy="dimension-1.h2">Signal, pulled from <em>complexity</em>.</h2>
+        <p data-copy="dimension-1.p2">From 2022 to 2025 I led network-medicine drug-repurposing initiatives inside <strong>REPO4EU</strong>, the EU consortium (grant No. 101057619), with an emphasis on infectious disease, building the multi-omics pipelines that turn disease modules into drug candidates, publishing with groups at TU Munich and Vienna, and with Harvard collaborators over the wider arc of the work.</p>
+        <p data-copy="dimension-1.p3">Former Junior Group Leader for Generative AI for Medicine at the University of Hamburg, on a summa cum laude PhD and three master’s degrees. I review for <em class="prose">Scientific Reports</em>, <em class="prose">PeerJ</em> and the <em class="prose">Journal of the Royal Society Interface</em>, and have served as external examiner on three doctoral committees: Madrid, Granada and Seville.</p>
         <div class="facts">
-          <span class="fact">Network medicine</span>
-          <span class="fact">Multi-omics</span>
-          <span class="fact">Drug repurposing</span>
-          <span class="fact">Peer reviewer</span>
+          <span data-copy="dimension-1.span" class="fact">Network medicine</span>
+          <span data-copy="dimension-1.span2" class="fact">Multi-omics</span>
+          <span data-copy="dimension-1.span3" class="fact">Drug repurposing</span>
+          <span data-copy="dimension-1.span4" class="fact">Peer reviewer</span>
         </div>
       </article>
 
       <article class="chapter" data-act="1" data-accent="blue" id="dimension-2">
-        <p class="part">04 — The AI engineer</p>
-        <h2>Agentic systems that do real <em>science</em>.</h2>
-        <p>I built my first conversational agent for disease-module discovery and drug repurposing in 2022 — the direct precursor of ChatDRex — years before “agentic” became a category. The same discipline ships today as 250+ reusable agent skills, self-healing code and model-agnostic orchestration.</p>
+        <p data-copy="dimension-2.p" class="part">04 · The AI engineer</p>
+        <h2 data-copy="dimension-2.h2">Agentic systems that do real <em>science</em>.</h2>
+        <p data-copy="dimension-2.p2">I built my first conversational agent for disease-module discovery and drug repurposing in 2022, the direct precursor of ChatDRex, before “agentic” was a category. As CTO I led the architecture that grew out of it: model-agnostic multi-agent orchestration, a library of 250+ reusable agent skills, retrieval grounded in PubMed, UniProt and NCBI, and the evaluation harness we measured all of it against. My fix for tool-message streaming in ChatAnthropicVertex is merged upstream in <a href="https://github.com/langchain-ai/langchain-google/pull/1263" target="_blank" rel="noopener"><strong>langchain-ai/langchain-google</strong> (PR #1263)</a>.</p>
         <div class="facts">
-          <span class="fact">LLM agents</span>
-          <span class="fact">LangGraph</span>
-          <span class="fact">RAG &amp; hallucination control</span>
-          <span class="fact">Benchmark design</span>
+          <span data-copy="dimension-2.span" class="fact">LLM agents</span>
+          <span data-copy="dimension-2.span2" class="fact">LangGraph</span>
+          <span data-copy="dimension-2.span3" class="fact">RAG &amp; hallucination control</span>
+          <span data-copy="dimension-2.span4" class="fact">LLM evaluation</span>
         </div>
       </article>
 
       <article class="chapter" data-act="2" data-accent="amber" id="dimension-3">
-        <p class="part">05 — The founder</p>
-        <h2>Ownership of the <em>whole engine</em>.</h2>
-        <p>Unusually for a CTO, I also run the commercial engine — founder-led sales, marketing, and the non-dilutive grant strategy behind approximately €234K in public funding. The team was selected into <strong>Antler’s</strong> inaugural Continental Europe residency in Berlin, a cohort billed at roughly the top 0.2% of applicants, where the idea was pressure-tested without taking investment.</p>
+        <p data-copy="dimension-3.p" class="part">05 · The founder</p>
+        <h2 data-copy="dimension-3.h2">Ownership of the <em>whole engine</em>.</h2>
+        <p data-copy="dimension-3.p2">Unusually for a CTO, I also ran the commercial engine: founder-led sales, marketing, and co-owning the EXIST application behind the approximately €234K in non-dilutive public funding the company raised. The team was selected into <strong>Antler’s</strong> inaugural Continental Europe residency in Berlin, roughly 100 founders from about 10,000 applicants, where the idea was pressure-tested hard. Antler did not invest and we did not raise.</p>
         <div class="facts">
-          <span class="fact">≈ €234K non-dilutive</span>
-          <span class="fact">Founder-led sales</span>
-          <span class="fact">Antler residency</span>
+          <span data-copy="dimension-3.span" class="fact">≈ €234K non-dilutive</span>
+          <span data-copy="dimension-3.span2" class="fact">Founder-led sales</span>
+          <span data-copy="dimension-3.span3" class="fact">Antler residency</span>
         </div>
       </article>
 
       <article class="chapter" data-act="3" data-accent="violet" id="dimension-4">
-        <p class="part">06 — The communicator &amp; mentor</p>
-        <h2>Making complex science <em>legible</em>.</h2>
-        <p>I sit on the board of <strong>IABioMed</strong>, the Spanish Society for AI in Biomedicine, as Head of Communications. I taught a 12-session graduate course in systems medicine at the University of Hamburg, have mentored roughly 19 students, and take my seminar <em class="prose">Your Research, Supercharged</em> to institutes across Europe — in English and Spanish.</p>
+        <p data-copy="dimension-4.p" class="part">06 · The communicator &amp; mentor</p>
+        <h2 data-copy="dimension-4.h2">Making complex science <em>legible</em>.</h2>
+        <p data-copy="dimension-4.p2">I sit on the board of <strong>IABioMed</strong>, the Spanish Society for AI in Biomedicine, as Head of Communications. I taught a 12-session graduate course in systems medicine at the University of Hamburg, have supervised or mentored 19 students, and in 2026 took my seminar <em class="prose">Your Research, Supercharged</em> to the Max Planck Institute, CSSB Hamburg, the University of Porto and IABioMed, in English and Spanish.</p>
         <div class="facts">
-          <span class="fact">IABioMed board</span>
-          <span class="fact">≈ 19 students mentored</span>
-          <span class="fact">EN · ES · DE</span>
+          <span data-copy="dimension-4.span" class="fact">IABioMed board</span>
+          <span data-copy="dimension-4.span2" class="fact">19 students supervised or mentored</span>
+          <span data-copy="dimension-4.span3" class="fact">EN · ES · DE (basic)</span>
         </div>
       </article>
 
@@ -716,40 +776,40 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 <section class="band" id="work" data-band="blue">
   <div class="wrap">
     <div class="band-head">
-      <p class="part rise">07 — Selected work</p>
-      <h2 class="rise d1">Products &amp; tools that <em>shipped</em>.</h2>
-      <p class="rise d2">Live demos, published algorithms, and open-source packages — each with public proof.</p>
+      <p data-copy="work.p" class="part rise">07 · Selected work</p>
+      <h2 data-copy="work.h2" class="rise d1">Products &amp; tools that <em>shipped</em>.</h2>
+      <p data-copy="work.p2" class="rise d2">Published algorithms, open-source packages and shipped product work, each with a link you can check.</p>
     </div>
     <div class="cards">
       <article class="card rise">
-        <span class="no">01</span>
-        <h3>Galagos <small>Co-Founder · CTO</small></h3>
-        <p>An agentic “virtual bioinformatician.” As of 2026, Galagos scored 92% on BixBench-Verified-50 (tied top of the public leaderboard); is an NVIDIA Inception member; and secured approximately €234K in non-dilutive public grants.</p>
-        <a class="go" href="https://galagos.ai" target="_blank" rel="noopener">2025 — now ↗</a>
+        <span data-copy="work.span" class="no">01</span>
+        <h3 data-copy="work.h3">Galagos <small>Co-Founder · CTO</small></h3>
+        <p data-copy="work.p3">An agentic “virtual bioinformatician” I carried from prototype to benchmarked release as CTO. On the full 205-task BixBench set it solved 166 of 205, 81.0%, at roughly €0.87 a question, and 92.0% on the 50-question expert-verified subset (46 of 50). Both runs were scored in-house, with the methodology published openly. NVIDIA Inception member; approximately €234K in non-dilutive public grants.</p>
+        <a data-copy="work.a" class="go" href="https://galagos.ai" target="_blank" rel="noopener">2025 to 2026 ↗</a>
       </article>
       <article class="card rise d1">
-        <span class="no">02</span>
-        <h3>ChatDRex <small>Concept · Co-senior author</small></h3>
-        <p>A conversational, multi-agent drug-repurposing engine curated by the REPO4EU consortium — built by the Master’s students I supervised, on the conversational agent I had prototyped in 2022. One of three co-senior authors; manuscript under review.</p>
-        <a class="go" href="https://arxiv.org/abs/2511.21438" target="_blank" rel="noopener">Preprint ↗</a>
+        <span data-copy="work.span2" class="no">02</span>
+        <h3 data-copy="work.h32">ChatDRex <small>Concept · Co-senior author</small></h3>
+        <p data-copy="work.p4">A conversational, multi-agent drug-repurposing engine curated by the REPO4EU consortium, built with the students and colleagues I worked with at CoSy.Bio, on the conversational agent I had prototyped in 2022. One of three co-senior authors; manuscript under review.</p>
+        <a data-copy="work.a2" class="go" href="https://arxiv.org/abs/2511.21438" target="_blank" rel="noopener">Preprint ↗</a>
       </article>
       <article class="card rise d2">
-        <span class="no">03</span>
-        <h3>AcadeMate <small>Author</small></h3>
-        <p>AI for systematic-review literature screening — the applied companion to my first-author PNAS work on LLMs in evidence synthesis.</p>
-        <a class="go" href="https://github.com/fmdelgado/academatepy" target="_blank" rel="noopener">GitHub ↗</a>
+        <span data-copy="work.span3" class="no">03</span>
+        <h3 data-copy="work.h33">AcadeMate <small>Author</small></h3>
+        <p data-copy="work.p5">AI for systematic-review literature screening: the applied companion to my first-author PNAS work on LLMs in evidence synthesis.</p>
+        <a data-copy="work.a3" class="go" href="https://github.com/fmdelgado/academatepy" target="_blank" rel="noopener">GitHub ↗</a>
       </article>
       <article class="card rise">
-        <span class="no">04</span>
-        <h3>DRaCOoN <small>First author</small></h3>
-        <p>A novel algorithm for pathway-level differential co-expression analysis in transcriptomics. Published in BMC Bioinformatics (2025); open source.</p>
-        <a class="go" href="https://link.springer.com/article/10.1186/s12859-025-06162-9" target="_blank" rel="noopener">BMC Bioinf. ↗</a>
+        <span data-copy="work.span4" class="no">04</span>
+        <h3 data-copy="work.h34">DRaCOoN <small>First author</small></h3>
+        <p data-copy="work.p6">A novel algorithm for pathway-level differential co-expression analysis in transcriptomics. First author, BMC Bioinformatics (2025). Reference implementation on GitHub, and on PyPI as dracoonpy.</p>
+        <a data-copy="work.a4" class="go" href="https://link.springer.com/article/10.1186/s12859-025-06162-9" target="_blank" rel="noopener">BMC Bioinf. ↗</a>
       </article>
       <article class="card rise d1">
-        <span class="no">05</span>
-        <h3>EnGNet / pyEnGNet <small>Algorithm creator · pyEnGNet contributor</small></h3>
-        <p>Ensemble gene co-expression network reconstruction, later GPU-accelerated — the algorithm behind my PhD, and a registered patent.</p>
-        <a class="go" href="https://github.com/aureliolfdez/pyengnet" target="_blank" rel="noopener">pyEnGNet ↗</a>
+        <span data-copy="work.span5" class="no">05</span>
+        <h3 data-copy="work.h35">EnGNet / pyEnGNet <small>Algorithm creator · contributor</small></h3>
+        <p data-copy="work.p7">Ensemble gene co-expression network reconstruction, the algorithm behind my PhD, originally in Java. Later reimplemented in Python and multi-GPU accelerated, published in The Journal of Supercomputing (2024).</p>
+        <a data-copy="work.a5" class="go" href="https://github.com/Daiego43/pyEnGNet" target="_blank" rel="noopener">pyEnGNet ↗</a>
       </article>
     </div>
   </div>
@@ -759,24 +819,24 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 <section class="band" id="expertise" data-band="teal">
   <div class="wrap">
     <div class="band-head">
-      <p class="part rise">08 — Expertise</p>
-      <h2 class="rise d1">Three technical <em>depths</em>.</h2>
+      <p data-copy="expertise.p" class="part rise">08 · Expertise</p>
+      <h2 data-copy="expertise.h2" class="rise d1">Three technical <em>depths</em>.</h2>
     </div>
     <div class="depths">
       <div class="depth rise">
-        <span class="no">01</span>
-        <h3>Agentic AI</h3>
-        <p>LLM scientific agents; LangGraph and multi-agent systems; RAG and hallucination control; evaluation and benchmark design.</p>
+        <span data-copy="expertise.span" class="no">01</span>
+        <h3 data-copy="expertise.h3">Agentic AI</h3>
+        <p data-copy="expertise.p2">LLM scientific agents; LangChain and LangGraph multi-agent systems; RAG, context engineering and hallucination control; LLM evaluation methodology, published openly.</p>
       </div>
       <div class="depth rise d1">
-        <span class="no">02</span>
-        <h3>Computational biology</h3>
-        <p>Network reconstruction; differential co-expression; drug repurposing; multi-omics and biclustering.</p>
+        <span data-copy="expertise.span2" class="no">02</span>
+        <h3 data-copy="expertise.h32">Computational biology</h3>
+        <p data-copy="expertise.p3">Network reconstruction; differential co-expression; drug repurposing; multi-omics and biclustering.</p>
       </div>
       <div class="depth rise d2">
-        <span class="no">03</span>
-        <h3>Production systems</h3>
-        <p>Python and R; GPU-accelerated pipelines; Nextflow and HPC; model-agnostic architecture.</p>
+        <span data-copy="expertise.span3" class="no">03</span>
+        <h3 data-copy="expertise.h33">Production systems</h3>
+        <p data-copy="expertise.p4">Python, R, Java and CUDA; multi-GPU and Nextflow HPC pipelines; model-agnostic architecture on single-tenant, GDPR-resident EU infrastructure.</p>
       </div>
     </div>
   </div>
@@ -786,36 +846,36 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 <section class="band" id="research" data-band="teal">
   <div class="wrap">
     <div class="band-head">
-      <p class="part rise">09 — Research</p>
-      <h2 class="rise d1">Peer-reviewed <em>credibility</em>.</h2>
-      <p class="rise d2" style="font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;color:var(--ink-3)">Google Scholar · verified 1 July 2026</p>
+      <p data-copy="research.p" class="part rise">09 · Research</p>
+      <h2 data-copy="research.h2" class="rise d1">Peer-reviewed, and <em>checkable</em>.</h2>
+      <p data-copy="research.p2" class="rise d2" style="font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;color:var(--ink-3)">Google Scholar · verified 1 July 2026</p>
     </div>
     <div class="metrics rise">
-      <div class="metric"><b>424</b><span>Citations</span></div>
-      <div class="metric"><b>7</b><span>h-index</span></div>
-      <div class="metric"><b>27</b><span>Works</span></div>
-      <div class="metric"><b>2</b><span>Nature / PNAS</span></div>
+      <div class="metric"><b data-copy="research.b">424</b><span data-copy="research.span">Citations</span></div>
+      <div class="metric"><b data-copy="research.b2">7</b><span data-copy="research.span2">h-index</span></div>
+      <div class="metric"><b data-copy="research.b3">11</b><span data-copy="research.span3">Peer-reviewed papers</span></div>
+      <div class="metric"><b data-copy="research.b4">2</b><span data-copy="research.span4">First-author papers</span></div>
     </div>
     <div class="papers">
       <article class="paper rise">
-        <p class="venue">PNAS · 2025</p>
-        <div><h3>Transforming literature screening: the emerging role of large language models in systematic reviews</h3><p class="role">First author · approximately 117 citations</p></div>
+        <p data-copy="research.p3" class="venue">PNAS · 2025</p>
+        <div><h3 data-copy="research.h3">Transforming literature screening: the emerging role of large language models in systematic reviews</h3><p data-copy="research.p4" class="role">First author · approximately 117 citations</p></div>
       </article>
       <article class="paper rise">
-        <p class="venue">Nature · 2025</p>
-        <div><h3>Pathology-oriented multiplexing enables integrative disease mapping</h3><p class="role">Contributing co-author</p></div>
+        <p data-copy="research.p5" class="venue">Nature · 2025</p>
+        <div><h3 data-copy="research.h32">Pathology-oriented multiplexing enables integrative disease mapping</h3><p data-copy="research.p6" class="role">Contributing co-author</p></div>
       </article>
       <article class="paper rise">
-        <p class="venue">BMC Bioinformatics · 2025</p>
-        <div><h3>DRaCOoN: pathway-level differential co-expression analysis in transcriptomics</h3><p class="role">First author</p></div>
+        <p data-copy="research.p7" class="venue">BMC Bioinformatics · 2025</p>
+        <div><h3 data-copy="research.h33">DRaCOon: a novel algorithm for pathway-level differential co-expression analysis in transcriptomics</h3><p data-copy="research.p8" class="role">First author</p></div>
       </article>
       <article class="paper rise">
-        <p class="venue">Artificial Intelligence in Medicine · 2019</p>
-        <div><h3>Computational methods for gene regulatory network reconstruction: a review</h3><p class="role">Most-cited · approximately 217 citations</p></div>
+        <p data-copy="research.p9" class="venue">Artificial Intelligence in Medicine · 2019</p>
+        <div><h3 data-copy="research.h34">Computational methods for Gene Regulatory Networks reconstruction and analysis: A review</h3><p data-copy="research.p10" class="role">Most-cited · approximately 217 citations</p></div>
       </article>
       <article class="paper rise">
-        <p class="venue">Nucleic Acids Research · 2021</p>
-        <div><h3>Role of a cryptic tRNA gene operon in survival under translational stress</h3><p class="role">Co-author</p></div>
+        <p data-copy="research.p11" class="venue">Nucleic Acids Research · 2021</p>
+        <div><h3 data-copy="research.h35">Role of a cryptic tRNA gene operon in survival under translational stress</h3><p data-copy="research.p12" class="role">Co-author</p></div>
       </article>
     </div>
   </div>
@@ -825,16 +885,16 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 <section class="band" id="recognition" data-band="amber">
   <div class="wrap">
     <div class="band-head">
-      <p class="part rise">10 — Recognition</p>
-      <h2 class="rise d1">Awards, talks &amp; a <em>public point of view</em>.</h2>
+      <p data-copy="recognition.p" class="part rise">10 · Recognition</p>
+      <h2 data-copy="recognition.h2" class="rise d1">Awards, talks &amp; a <em>public point of view</em>.</h2>
     </div>
     <div class="awards">
-      <article class="award rise"><p class="yr">2023</p><h3>Young Investigator Award</h3><p>REPO4EU</p></article>
-      <article class="award rise d1"><p class="yr">2023</p><h3>Best Talk — RExPO’23</h3><p>Stockholm</p></article>
-      <article class="award rise d2"><p class="yr">2022</p><h3>Top 3 Speaker — RExPO’22</h3><p>Maastricht</p></article>
-      <article class="award rise"><p class="yr">2026</p><h3>Deep Tech Momentum · DTM100</h3><p>Berlin</p></article>
-      <article class="award rise d1"><p class="yr">2026</p><h3>Falling Walls Venture — nominated</h3><p>Pending</p></article>
-      <article class="award rise d2"><p class="yr">Series</p><h3>“Your Research, Supercharged” — solo seminar</h3><p>MPI · CSSB</p></article>
+      <article class="award rise"><p data-copy="recognition.p2" class="yr">2023</p><h3 data-copy="recognition.h3">Young Investigator Award</h3><p data-copy="recognition.p3">REPO4EU</p></article>
+      <article class="award rise d1"><p data-copy="recognition.p4" class="yr">2023</p><h3 data-copy="recognition.h32">Best Talk · RExPO’23</h3><p data-copy="recognition.p5">Stockholm</p></article>
+      <article class="award rise d2"><p data-copy="recognition.p6" class="yr">2022</p><h3 data-copy="recognition.h33">Top 3 Speaker · RExPO’22</h3><p data-copy="recognition.p7">Maastricht</p></article>
+      <article class="award rise"><p data-copy="recognition.p8" class="yr">2026</p><h3 data-copy="recognition.h34">Deep Tech Momentum · DTM100</h3><p data-copy="recognition.p9">Galagos · Berlin</p></article>
+      <article class="award rise d1"><p data-copy="recognition.p10" class="yr">2026</p><h3 data-copy="recognition.h35">Falling Walls Venture</h3><p data-copy="recognition.p11">Nominated, April 2026</p></article>
+      <article class="award rise d2"><p data-copy="recognition.p12" class="yr">Series</p><h3 data-copy="recognition.h36">“Your Research, Supercharged” · solo seminar</h3><p data-copy="recognition.p13">MPI · CSSB</p></article>
     </div>
   </div>
 </section>
@@ -847,7 +907,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
                   a DNA helix and server racks in the middle, gears, books and a microphone above,
                   and a rocket at the summit."
              decoding="async">
-        <p class="palace-caption" id="palaceCap">Scattered parts</p>
+        <p data-copy="palaceStage.p" class="palace-caption" id="palaceCap">Scattered parts</p>
       </div>
     </div>
   </div>
@@ -856,13 +916,13 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 <!-- ══ CONTACT ═══════════════════════════════════════ -->
 <section class="contact studs" id="contact" data-band="violet">
   <div class="wrap">
-    <p class="part rise">11 — Contact</p>
-    <h2 class="rise d1">Let’s build something <em>legible</em>.</h2>
+    <p data-copy="contact.p" class="part rise">11 · Contact</p>
+    <h2 data-copy="contact.h2" class="rise d1">Looking for the next system to make <em>legible</em>.</h2>
     <div class="reach rise d2">
 
       <!-- primary target: the address is visible, and copyable in one tap -->
       <div class="reach-primary">
-        <a class="reach-mail" href="mailto:ferdecha@gmail.com?subject=Hello%20from%20your%20site">
+        <a data-copy="contact.a" class="reach-mail" href="mailto:ferdecha@gmail.com?subject=Hello%20from%20your%20site">
           <span class="reach-ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <rect x="2" y="4" width="20" height="16" rx="2"/>
@@ -888,14 +948,14 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
           <svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <path d="M20 6 9 17l-5-5"/>
           </svg>
-          <span class="reach-copy-label">Copy</span>
+          <span data-copy="contact.span" class="reach-copy-label">Copy</span>
         </button>
       </div>
 
       <!-- profiles -->
       <div class="reach-grid">
 
-        <a class="reach-link" href="https://www.linkedin.com/in/fernando-delgado-chaves" target="_blank" rel="noopener">
+        <a data-copy="contact.a2" class="reach-link" href="https://www.linkedin.com/in/fernando-delgado-chaves" target="_blank" rel="noopener">
           <span class="reach-ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -913,7 +973,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
           <span class="sr-only">(opens in a new tab)</span>
         </a>
 
-        <a class="reach-link" href="https://scholar.google.com/citations?user=LT3VzUgAAAAJ" target="_blank" rel="noopener">
+        <a data-copy="contact.a3" class="reach-link" href="https://scholar.google.com/citations?user=LT3VzUgAAAAJ" target="_blank" rel="noopener">
           <span class="reach-ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <path d="M21.4 10.92a1 1 0 0 0 0-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/>
@@ -931,7 +991,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
           <span class="sr-only">(opens in a new tab)</span>
         </a>
 
-        <a class="reach-link" href="https://orcid.org/0000-0002-6171-1215" target="_blank" rel="noopener">
+        <a data-copy="contact.a4" class="reach-link" href="https://orcid.org/0000-0002-6171-1215" target="_blank" rel="noopener">
           <span class="reach-ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/>
@@ -948,7 +1008,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
           <span class="sr-only">(opens in a new tab)</span>
         </a>
 
-        <a class="reach-link" href="https://github.com/fmdelgado" target="_blank" rel="noopener">
+        <a data-copy="contact.a5" class="reach-link" href="https://github.com/fmdelgado" target="_blank" rel="noopener">
           <span class="reach-ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.4.5-.7 1.1-.8 1.7-.1.6-.1 1.3 0 1.9v4"/>
@@ -957,7 +1017,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
           </span>
           <span class="reach-txt">
             <b>GitHub</b>
-            <span class="reach-sub">@fmdelgado</span>
+            <span class="reach-sub reach-sub-wrap">academatepy &middot; DRACOONpy &middot; drugrepochatter</span>
           </span>
           <span class="reach-go">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
@@ -968,7 +1028,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
       </div>
 
       <!-- metadata: where, and in which timezone -->
-      <p class="reach-meta">
+      <p data-copy="contact.p2" class="reach-meta">
         <span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/>
@@ -986,15 +1046,15 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <path d="M5 8h14"/><path d="M5 12h9"/><path d="M5 16h5"/>
           </svg>
-          EN &middot; ES &middot; DE
+          EN &middot; ES &middot; DE (basic)
         </span>
       </p>
 
       <span class="sr-only" role="status" aria-live="polite" id="reachStatus"></span>
     </div>
     <footer>
-      <span>© 2026 Fernando M. Delgado-Chaves</span>
-      <span>Built brick by brick</span>
+      <span data-copy="footer.span">© 2026 Fernando M. Delgado-Chaves</span>
+      <span data-copy="footer.span2">Open to Applied AI and forward-deployed engineering roles</span>
     </footer>
   </div>
 </section>
