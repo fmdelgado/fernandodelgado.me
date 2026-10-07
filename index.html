@@ -4,28 +4,32 @@
 <meta charset="utf-8">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fernando M. Delgado-Chaves, PhD — AI Engineer for Life Sciences</title>
-<meta name="description" content="I build agentic AI and LLM systems that do real science, inspectable at every step. Nine years of computational biology, 443 citations. Open to EU roles.">
+<title>Fernando M. Delgado-Chaves, PhD — AI agents for biomedical research, evaluated</title>
+<meta name="description" content="I build AI agents for biomedical research, and measure when they can be trusted. Computational biology, LLM evaluation and scientific deployment. First-author PNAS research.">
 <meta name="author" content="Fernando M. Delgado-Chaves">
 <meta name="theme-color" content="#F8F8F8">
 <!-- canonical + absolute social URLs: scrapers (LinkedIn especially) cannot
      resolve a relative og:image, and the site is served from two origins -->
 <link rel="canonical" href="https://fmdelgado.github.io/fernandodelgado.me/">
+<link rel="alternate" hreflang="en" href="https://fmdelgado.github.io/fernandodelgado.me/">
+<link rel="alternate" hreflang="es" href="https://fmdelgado.github.io/fernandodelgado.me/es/">
+<link rel="alternate" hreflang="x-default" href="https://fmdelgado.github.io/fernandodelgado.me/">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://fmdelgado.github.io/fernandodelgado.me/">
 <meta property="og:site_name" content="Fernando M. Delgado-Chaves">
-<meta property="og:title" content="Fernando M. Delgado-Chaves, PhD — AI Engineer for Life Sciences">
-<meta property="og:description" content="Agentic AI and LLM systems that do real science, inspectable at every step. Nine years of computational biology, 443 citations. Open to EU roles.">
-<meta property="og:image" content="https://fmdelgado.github.io/fernandodelgado.me/media/share.jpg">
-<meta property="og:image:secure_url" content="https://fmdelgado.github.io/fernandodelgado.me/media/share.jpg">
+<meta property="og:title" content="Fernando M. Delgado-Chaves, PhD — AI agents for biomedical research, evaluated">
+<meta property="og:description" content="I build AI agents for biomedical research, and measure when they can be trusted. Computational biology, LLM evaluation and scientific deployment. First-author PNAS research.">
+<meta property="og:image" content="https://fmdelgado.github.io/fernandodelgado.me/share-profile.jpg">
+<meta property="og:image:secure_url" content="https://fmdelgado.github.io/fernandodelgado.me/share-profile.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Fernando M. Delgado-Chaves, PhD — AI engineer for life sciences">
+<meta property="og:image:alt" content="Fernando M. Delgado-Chaves, PhD, with his portrait and thesis: AI agents for biomedical research, evaluated">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fernando M. Delgado-Chaves, PhD — AI Engineer for Life Sciences">
-<meta name="twitter:description" content="Agentic AI and LLM systems that do real science, inspectable at every step. Nine years of computational biology, 443 citations. Open to EU roles.">
-<meta name="twitter:image" content="https://fmdelgado.github.io/fernandodelgado.me/media/share.jpg">
+<meta name="twitter:title" content="Fernando M. Delgado-Chaves, PhD — AI agents for biomedical research, evaluated">
+<meta name="twitter:description" content="I build AI agents for biomedical research, and measure when they can be trusted. Computational biology, LLM evaluation and scientific deployment. First-author PNAS research.">
+<meta name="twitter:image" content="https://fmdelgado.github.io/fernandodelgado.me/share-profile.jpg">
+<meta name="twitter:image:alt" content="Fernando M. Delgado-Chaves, PhD, with his portrait and biomedical AI evaluation thesis">
 <!-- Person schema: gives search engines and profile scrapers one machine-readable
      identity, and ties this page to the ORCID/Scholar/GitHub records it cites -->
 <script type="application/ld+json">
@@ -34,9 +38,12 @@
   "@type": "Person",
   "name": "Fernando M. Delgado-Chaves",
   "honorificSuffix": "PhD",
-  "jobTitle": "AI Engineer",
+  "alternateName": ["Fernando M. Delgado", "Fernando Delgado-Chaves"],
+  "jobTitle": "AI Engineer & Computational Biologist — biomedical research and evaluation",
+  "knowsAbout": ["AI agents for biomedical research", "LLM evaluation", "Network medicine", "Multi-omics", "Drug repurposing"],
+  "alumniOf": [{"@type": "CollegeOrUniversity", "name": "Universidad Pablo de Olavide"}],
   "url": "https://fmdelgado.github.io/fernandodelgado.me/",
-  "image": "https://fmdelgado.github.io/fernandodelgado.me/media/share.jpg",
+  "image": "https://fmdelgado.github.io/fernandodelgado.me/media/portrait-512.webp",
   "email": "ferdecha@gmail.com",
   "sameAs": [
     "https://www.linkedin.com/in/fernando-delgado-chaves",
@@ -67,13 +74,13 @@
   --raised:#FFFFFF;
   --ink:#0E0E12;
   --ink-2:#54545F;
-  --ink-3:#82828E;
+  --ink-3:#656571;
   --rule:#E2E2E8;
   --rule-2:#EDEDF1;
 
   --teal:#0B6C78;      /* science  */
   --blue:#0050B6;      /* ai       */
-  --amber:#C57A0B;     /* founder  */
+  --amber:#925900;     /* founder: accessible foreground amber */
   --violet:#643E8F;    /* comms    */
   --brick:#C8102E;     /* the shared red hub */
 
@@ -86,6 +93,7 @@
 
   --pad:clamp(1.25rem,5vw,4.5rem);
   --maxw:1320px;
+  --header-h:58px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -168,28 +176,18 @@ nav a::after{content:"";position:absolute;left:0;right:100%;bottom:.7rem;height:
   background:var(--accent);transition:right .28s cubic-bezier(.2,.7,.3,1)}
 nav a:hover{color:var(--ink)}
 nav a:hover::after{right:0}
-/* on narrow phones reclaim the space from the brand, not from the nav —
-   five jump targets matter more than the full name in the corner */
+nav a[aria-current="location"]{color:var(--accent)}
+nav a[aria-current="location"]::after{right:0}
+.nav-compact{display:none}
+/* Give compact navigation its own row: every destination remains visible. */
 @media(max-width:680px){
-  .brand{font-size:0;flex:none;min-width:44px}
-  .brand::after{content:"FMDC";font-size:1rem;letter-spacing:.02em}
-  nav{gap:.6rem}
-  nav a{font-size:.66rem;letter-spacing:.04em}
-  nav a:nth-child(2),nav a:nth-child(3),nav a:nth-child(4),nav a:nth-child(5){display:flex}
-}
-/* below 480px five labels cannot fit on one line at a legible size (measured:
-   the strip is 322px wide and the header gives it 322px only at 480px). Rather
-   than drop a jump target or shrink it under the 44px tap floor, the nav becomes
-   its own horizontal scroll strip — the PAGE still never scrolls sideways — with
-   a fade on the trailing edge to show there is more. Scoped to the range where it
-   genuinely overflows, so the fade never lies. */
-@media(max-width:479px){
-  nav{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;
-    -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
-    -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 1.6rem),transparent);
-    mask-image:linear-gradient(90deg,#000 calc(100% - 1.6rem),transparent);
-    padding-right:.4rem}
-  nav::-webkit-scrollbar{display:none}
+  header .wrap{flex-wrap:wrap;gap:0;padding-block:.25rem 0}
+  .brand{font-size:.875rem;min-height:36px}
+  nav{width:100%;flex-wrap:wrap;justify-content:space-between;gap:.1rem}
+  nav a{font-size:.75rem;letter-spacing:0;text-transform:none;
+    padding:.65rem .1rem;min-height:44px;min-width:44px;justify-content:center}
+  .nav-full{display:none}
+  .nav-compact{display:inline}
 }
 
 /* ── hero ─────────────────────────────────────────────── */
@@ -201,7 +199,6 @@ nav a:hover::after{right:0}
      all land on the first screen */
   .hero-grid > div{order:2}
   .hero-grid > .hero-fig{order:1}
-  .hero-fig img.portrait{width:clamp(140px,36vw,190px)}
 }
 /* availability pill, riding the eyebrow line */
 .status{display:inline-flex;align-items:center;gap:.5rem;margin-left:.9rem;
@@ -227,6 +224,16 @@ nav a:hover::after{right:0}
   margin-inline:auto;object-fit:cover;
   box-shadow:0 0 0 1px var(--rule), 0 26px 50px -30px rgba(14,14,18,.6)}
 .hero-fig:has(img.portrait)::after{display:none}   /* no ground shadow under a circle */
+/* Keep this override after the base portrait declaration. */
+@media(max-width:900px){
+  .hero{padding-block:1.5rem 2.5rem}
+  .hero-grid{gap:1rem}
+  .hero-fig img.portrait{width:clamp(88px,28vw,140px)}
+}
+@media(max-width:680px){
+  .hero h1{font-size:clamp(2rem,9vw,2.75rem);margin:.9rem 0 1rem}
+  .hero .lede{font-size:1.05rem;line-height:1.5;max-width:40ch}
+}
 
 .hero h1{margin:1.1rem 0 1.4rem}
 .hero h1 span{display:block;color:var(--accent);transition:color .5s ease}
@@ -258,6 +265,8 @@ nav a:hover::after{right:0}
 .chip b{font-family:var(--display);font-weight:600;font-size:clamp(.9rem,.86rem + .17vw,1rem);
   letter-spacing:-.015em;line-height:1.3;display:block}
 .cta{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero .cta{margin-top:1.5rem}
+.hero .chips{margin:1.75rem 0 0}
 .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.5rem;
   border-radius:2px;text-decoration:none;font-weight:600;font-size:.95rem;
   min-height:48px;transition:transform .18s cubic-bezier(.2,.7,.3,1),background .3s,box-shadow .25s}
@@ -266,6 +275,8 @@ nav a:hover::after{right:0}
 .btn-line{border:1.5px solid var(--rule);color:var(--ink)}
 .btn-line:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
 .btn svg{width:1rem;height:1rem;flex:none}
+.btn:active,.reach-mail:active,.reach-link:active{transform:translateY(1px)}
+.reach-copy:active{background:var(--accent-soft)}
 
 /* ── the gap: full-bleed statement ────────────────────── */
 .gap{padding-block:clamp(2.75rem,5.5vw,4.5rem);border-block:1px solid var(--rule);position:relative}
@@ -276,7 +287,7 @@ nav a:hover::after{right:0}
 /* ── the narrative: sticky stage + chapters ───────────── */
 .narrative{position:relative}
 .narr-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,3rem);align-items:start}
-.stage-col{position:sticky;top:58px;height:calc(100vh - 58px);display:flex;align-items:center;
+.stage-col{position:sticky;top:var(--header-h);height:calc(100vh - var(--header-h));display:flex;align-items:center;
   justify-content:center;pointer-events:none}
 .stage{position:relative;width:100%;aspect-ratio:4/3;max-height:calc(100vh - 12rem);overflow:hidden}
 /* Hard swap, never a crossfade. The clips hold their exact endpoint frames, so
@@ -308,33 +319,29 @@ nav a:hover::after{right:0}
   transform:translateY(-50%);z-index:60;display:grid;gap:0}
 .rail button{width:auto;padding:1.1rem 1.25rem;border:0;background:none;cursor:pointer;
   display:flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;line-height:0}
-.rail i{display:block;width:9px;height:9px;border-radius:50%;background:var(--rule);
+.rail i{display:block;width:9px;height:9px;border-radius:50%;background:var(--ink-3);
   transition:background .35s,transform .35s;position:relative}
 .rail button[aria-current="true"] i{background:var(--accent);transform:scale(1.5)}
 .rail button:hover i{background:var(--ink-3)}
+.rail[inert]{visibility:hidden;pointer-events:none}
+.rail button:active i{transform:scale(.85)}
 @media(max-width:1100px){.rail{display:none}}
 
 @media(max-width:900px){
   .narr-grid{grid-template-columns:1fr;gap:0}
-  /* the pinned band must be OPAQUE behind the media — a translucent tail let
-     live paragraphs render half-erased behind the bricks. The fade now lives
-     in an ::after strip that sits below the band, over nothing. */
-  .stage-col{position:sticky;top:58px;height:auto;padding-block:.75rem 1rem;
-    background:var(--paper);z-index:20}
-  .stage-col::after{content:"";position:absolute;left:0;right:0;top:100%;height:22px;
-    background:linear-gradient(var(--paper),rgba(248,248,248,0));pointer-events:none}
+  .stage-col{position:relative;top:auto;height:auto;padding-block:1rem;
+    background:var(--paper)}
   .stage{max-height:32vh;aspect-ratio:4/3;margin-inline:auto;width:min(100%,26rem)}
   .chapter{min-height:auto;padding-block:2.25rem 3.25rem}
   .chapters{padding-top:.5rem}
-  /* anchor jumps must clear the pinned band, not land under it */
-  #build{scroll-margin-top:calc(58px + 32vh + 2.5rem)}
 }
 
 /* ── generic section frame ────────────────────────────── */
-section{scroll-margin-top:72px}
+section{scroll-margin-top:calc(var(--header-h) + 1rem)}
 /* chapters are anchor targets too (the nav routes to #dimension-2), so they need
    the same clearance under the sticky header */
-.chapter[id]{scroll-margin-top:72px}
+.chapter[id]{scroll-margin-top:calc(var(--header-h) + 1rem)}
+#main,#top{scroll-margin-top:calc(var(--header-h) + 1rem)}
 .band{padding-block:clamp(3.5rem,8vw,7rem);border-top:1px solid var(--rule)}
 .band-head{margin-bottom:clamp(2rem,4vw,3.25rem);max-width:60ch}
 .band-head h2{margin:.7rem 0 .9rem}
@@ -383,6 +390,10 @@ section{scroll-margin-top:72px}
 .paper h3{font-size:clamp(1rem,.95rem + .35vw,1.2rem);font-weight:600;letter-spacing:-.015em;
   line-height:1.3;margin-bottom:.4rem}
 .paper .role{font-family:var(--mono);font-size:.72rem;color:var(--ink-3);letter-spacing:.04em}
+.paper h3 a{text-decoration:underline;text-decoration-color:var(--rule);
+  text-decoration-thickness:1px;text-underline-offset:.2em}
+.paper h3 a:hover{color:var(--accent);text-decoration-color:currentColor}
+.card-links{display:flex;flex-wrap:wrap;gap:.2rem 1rem}
 @media(max-width:640px){.paper{grid-template-columns:1fr;gap:.5rem}}
 
 /* ── recognition ──────────────────────────────────────── */
@@ -412,8 +423,8 @@ section{scroll-margin-top:72px}
 /* shared label stack */
 .reach-txt{display:flex;flex-direction:column;gap:.1rem;min-width:0}
 .reach-txt b{font-size:.95rem;font-weight:600;letter-spacing:-.01em;line-height:1.3}
-.reach-sub{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--ink-3);
-  line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.reach-sub{font-family:var(--mono);font-size:.75rem;letter-spacing:.04em;color:var(--ink-3);
+  line-height:1.5;overflow-wrap:anywhere}
 /* one sub-label names repositories rather than a handle; it is allowed to wrap
    instead of being ellipsed away, since the names are the point */
 .reach-sub-wrap{white-space:normal;overflow-wrap:anywhere;text-overflow:clip;
@@ -491,7 +502,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 .palace-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.66fr);
   gap:clamp(1rem,2.5vw,2.5rem);align-items:start;max-width:var(--maxw);
   margin-inline:auto;padding-inline:var(--pad)}
-.palace-col{position:sticky;top:58px;height:calc(100vh - 58px);
+.palace-col{position:sticky;top:var(--header-h);height:calc(100vh - var(--header-h));
   display:flex;align-items:center;justify-content:center;pointer-events:none}
 .palace-stage{position:relative;width:100%;aspect-ratio:3/4;
   max-height:calc(100vh - 10rem);margin-inline:auto}
@@ -542,19 +553,15 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 
 @media(max-width:1000px){
   .palace-grid{grid-template-columns:1fr}
-  /* opaque behind the media (see .stage-col above), fade moved below the band */
-  .palace-col{position:sticky;top:58px;height:auto;padding-block:.6rem 1.4rem;
-    background:var(--paper);z-index:20;order:-1}
-  .palace-col::after{content:"";position:absolute;left:0;right:0;top:100%;height:22px;
-    background:linear-gradient(var(--paper),rgba(248,248,248,0));pointer-events:none}
+  .palace-col{position:relative;top:auto;height:auto;padding-block:.6rem 2rem;
+    background:var(--paper);order:-1}
   /* a quarter of the screen, not half — the scrub is barely legible at this
      width and it was costing six screenfuls of reading room */
   .palace-stage{max-height:26vh;width:min(100%,11rem);margin-inline:auto}
   /* the caption drops into the band's own opaque padding instead of printing
      itself over whatever paragraph happens to be underneath */
   .palace-caption{bottom:-1.15rem}
-  /* jumping to WORK/EXPERTISE/RESEARCH must clear the pinned tower */
-  .palace-grid section{scroll-margin-top:calc(58px + 26vh + 2.75rem)}
+  .palace-grid section{scroll-margin-top:calc(var(--header-h) + 1rem)}
 }
 
 /* ── single-column cleanup ─────────────────────────────
@@ -586,6 +593,14 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 .gap .part::before{background:#fff;opacity:.5}
 .gap blockquote{color:#fff;max-width:24ch}
 .gap blockquote em{color:#7FD4DE}
+.film-control{position:absolute;right:var(--pad);bottom:1rem;z-index:1;
+  min-height:44px;padding:.6rem 1rem;border:1px solid rgba(255,255,255,.55);
+  border-radius:2px;background:rgba(14,14,18,.85);color:#fff;
+  font-family:var(--mono);font-size:.75rem;cursor:pointer}
+.film-control:hover{background:#0E0E12;border-color:#fff}
+.film-control:active{background:#303038}
+.film-control:focus-visible{outline-color:#7FD4DE}
+.film-control[hidden]{display:none}
 @media(max-width:900px){
   .gap{padding-block:clamp(3.5rem,11vw,6rem)}
   .gap::after{background:linear-gradient(rgba(14,14,18,.86),rgba(14,14,18,.7))}
@@ -622,6 +637,24 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
     transition-duration:.001ms!important}
   .rise{opacity:1;transform:none}
 }
+/* Metadata is real content, not a decorative texture. */
+.part,.status,.chip small,.card .no,.card h3 small,.depth .no,
+.metric span,.paper .venue,.paper .role,.award .yr,.award p,
+.reach-copy,.reach-sub-wrap,.reach-meta,footer,.palace-caption,.fact,.scrollcue{font-size:.75rem}
+.status{letter-spacing:.04em}
+@media(prefers-reduced-transparency:reduce){
+  header{background:var(--paper);backdrop-filter:none}
+}
+@media(prefers-contrast:more){
+  :root{--ink-3:#54545F;--rule:#A5A5B0;--rule-2:#C5C5CF}
+  header{background:var(--paper);backdrop-filter:none}
+}
+@media(max-height:500px){
+  header{position:relative}
+  .stage-col,.palace-col{position:relative;top:auto;height:auto}
+  .rail{display:none}
+}
+header nav a[hreflang]{padding-inline:.6rem;margin-inline:-.6rem}
 </style>
 </head>
 <body>
@@ -630,37 +663,37 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 <header id="hdr">
   <div class="wrap">
     <a data-copy="hdr.a" class="brand" href="#top"><i></i>F.M. Delgado-Chaves</a>
-    <nav>
-      <a data-copy="nav.a5" href="#dimension-2">AI engineering</a>
+    <nav aria-label="Main navigation">
+      <a data-copy="nav.a5" href="#dimension-2" aria-label="AI engineering"><span class="nav-full">AI engineering</span><span class="nav-compact">AI</span></a>
       <a data-copy="nav.a" href="#work">Work</a>
       <a data-copy="nav.a2" href="#expertise">Expertise</a>
       <a data-copy="nav.a3" href="#research">Research</a>
       <a data-copy="nav.a4" href="#contact">Contact</a>
+      <a data-copy="nav.es" href="es/" lang="es" hreflang="es" aria-label="Versión breve en español">ES</a>
     </nav>
   </div>
 </header>
 
-<div class="rail" aria-hidden="true" id="rail"></div>
+<nav class="rail" aria-label="Professional dimensions" id="rail" inert></nav>
 
-<main id="main">
+<main id="main" tabindex="-1">
 <div id="top"></div>
 
 <!-- ══ HERO ══════════════════════════════════════════ -->
 <section class="hero grid-bg" data-band="teal">
   <div class="wrap hero-grid">
     <div>
-      <p data-copy="section.p" class="part rise">AI engineer · Agentic systems<span class="status"><b></b>Open to Applied AI and forward-deployed roles, EU</span></p>
+      <p data-copy="section.p" class="part rise">AI for biomedical research<span class="status"><b></b>Open to life-science AI roles, EU</span></p>
       <h1 data-copy="section.h1" class="rise d1">Fernando M.<span>Delgado-Chaves</span></h1>
-      <p data-copy="section.p2" class="lede rise d2">I build <strong>agentic AI systems that do real science</strong>, grounded in nine years of computational biology, measured against public benchmarks, and inspectable at every step.</p>
-      <div class="chips rise d3" style="margin-top:2rem">
-        <div class="chip"><small data-copy="section.small">Most recent</small><b>Co-Founder &amp; CTO · Galagos</b></div>
-        <div class="chip"><small data-copy="section.small2">Record</small><b>443 citations · h-index 8</b></div>
-        <div class="chip"><small data-copy="section.small3">Doctorate</small><b>PhD · summa cum laude</b></div>
-      </div>
+      <p data-copy="section.p2" class="lede rise d2">I build <strong>AI agents for biomedical research</strong>, and measure when they can be trusted, drawing on nine years of computational biology.</p>
       <div class="cta rise d4">
-        <a class="btn btn-solid" href="#work">Selected work
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a data-copy="section.cv" class="btn btn-solid" href="downloads/Fernando-M-Delgado-Chaves-CV.pdf">CV in PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a data-copy="section.a" class="btn btn-line" href="#contact">Get in touch</a>
+      </div>
+      <div class="chips rise d3">
+        <div class="chip"><small data-copy="section.small">Most recent</small><b>CTO · Galagos, <span style="white-space:nowrap">2025–26</span></b></div>
+        <div class="chip"><small data-copy="section.small2">Research</small><b>First-author PNAS · 2025</b></div>
+        <div class="chip"><small data-copy="section.small3">Doctorate</small><b>PhD · summa cum laude</b></div>
       </div>
     </div>
     <div class="hero-fig rise d2">
@@ -680,9 +713,10 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 <section class="gap" data-band="teal">
   <video id="gapFilm" muted loop playsinline preload="none" aria-hidden="true"
          poster="media/hero/hero-poster.jpg" width="960" height="540"></video>
+  <button data-copy="section.button" class="film-control" type="button" id="filmControl" aria-controls="gapFilm" hidden>Pause background video</button>
   <div class="wrap">
-    <p data-copy="section.p3" class="part rise" style="margin-bottom:1.4rem">02 · The gap</p>
-    <blockquote data-copy="section.blockquote" class="rise d1">Industrial-scale data generation, <em>artisanal-scale</em> analysis. Teams are not slow, they are overwhelmed. I build the agents that take that queue on.</blockquote>
+    <p data-copy="section.p3" class="part rise" style="margin-bottom:1.4rem">02 · The problem</p>
+    <blockquote data-copy="section.blockquote" class="rise d1">AI agents now run analyses in minutes. Knowing <em>when to trust them</em> is the bottleneck.</blockquote>
   </div>
 </section>
 
@@ -718,9 +752,9 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
     <div class="chapters" id="chapters">
 
       <article class="chapter" data-act="0" data-accent="teal" id="dimension-1">
-        <p data-copy="dimension-1.p" class="part">03 · The bioinformatician &amp; scientist</p>
+        <p data-copy="dimension-1.p" class="part">03 · The bioinformatician</p>
         <h2 data-copy="dimension-1.h2">Signal, pulled from <em>complexity</em>.</h2>
-        <p data-copy="dimension-1.p2">From 2022 to 2025 I led network-medicine drug-repurposing initiatives inside <strong>REPO4EU</strong>, the EU consortium (grant No. 101057619), with an emphasis on infectious disease, building the multi-omics pipelines that turn disease modules into drug candidates, publishing with groups at TU Munich and Vienna, and with Harvard collaborators over the wider arc of the work.</p>
+        <p data-copy="dimension-1.p2">From 2022 to 2025 I worked on network-medicine drug repurposing inside <strong>REPO4EU</strong>, the EU consortium (grant No. 101057619). I designed its prioritisation of host-directed antiviral candidates for HSV-1/2, evaluating 430 disease modules, and published with groups at TU Munich and Vienna, and with Harvard collaborators over the wider arc of the work.</p>
         <p data-copy="dimension-1.p3">Former Junior Group Leader for Generative AI for Medicine at the University of Hamburg, on a summa cum laude PhD and three master’s degrees. I review for <em class="prose">Scientific Reports</em>, <em class="prose">PeerJ</em> and the <em class="prose">Journal of the Royal Society Interface</em>, and have served as external examiner on three doctoral committees: Madrid, Granada and Seville.</p>
         <div class="facts">
           <span data-copy="dimension-1.span" class="fact">Network medicine</span>
@@ -732,35 +766,35 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 
       <article class="chapter" data-act="1" data-accent="blue" id="dimension-2">
         <p data-copy="dimension-2.p" class="part">04 · The AI engineer</p>
-        <h2 data-copy="dimension-2.h2">Agentic systems that do real <em>science</em>.</h2>
-        <p data-copy="dimension-2.p2">I built my first conversational agent for disease-module discovery and drug repurposing in 2022, the direct precursor of ChatDRex, before “agentic” was a category. As CTO I led the architecture that grew out of it: model-agnostic multi-agent orchestration, a library of 250+ reusable agent skills, retrieval grounded in PubMed, UniProt and NCBI, and the evaluation harness we measured all of it against. My fix for tool-message streaming in ChatAnthropicVertex is merged upstream in <a href="https://github.com/langchain-ai/langchain-google/pull/1263" target="_blank" rel="noopener"><strong>langchain-ai/langchain-google</strong> (PR #1263)</a>.</p>
+        <h2 data-copy="dimension-2.h2">Agents built to be <em>checked</em>.</h2>
+        <p data-copy="dimension-2.p2">In 2022 I wired PubMed retrieval into GPT-3 prototypes to curb hallucinations; that prototype became ChatDRex. At Galagos I owned the agent layer, the skill system (810 skills by June 2026), the evaluation grading and the end-to-end tests; my co-founder owned the platform. Retrieval is grounded in PubMed, UniProt and NCBI. My fix for tool-message streaming in ChatAnthropicVertex is merged upstream in <a href="https://github.com/langchain-ai/langchain-google/pull/1263" target="_blank" rel="noopener"><strong>langchain-ai/langchain-google</strong> (PR #1263)</a>.</p>
         <div class="facts">
           <span data-copy="dimension-2.span" class="fact">LLM agents</span>
-          <span data-copy="dimension-2.span2" class="fact">LangGraph</span>
+          <span data-copy="dimension-2.span2" class="fact">LLM evaluation</span>
           <span data-copy="dimension-2.span3" class="fact">RAG &amp; hallucination control</span>
-          <span data-copy="dimension-2.span4" class="fact">LLM evaluation</span>
+          <span data-copy="dimension-2.span4" class="fact">LangGraph</span>
         </div>
       </article>
 
       <article class="chapter" data-act="2" data-accent="amber" id="dimension-3">
         <p data-copy="dimension-3.p" class="part">05 · The founder</p>
-        <h2 data-copy="dimension-3.h2">Ownership of the <em>whole engine</em>.</h2>
-        <p data-copy="dimension-3.p2">Unusually for a CTO, I also ran the commercial engine: founder-led sales, marketing, and co-owning the EXIST application behind the approximately €234K in non-dilutive public funding the company raised. The team was selected into <strong>Antler’s</strong> inaugural Continental Europe residency in Berlin, roughly 100 founders from about 10,000 applicants, where the idea was pressure-tested hard. Antler did not invest and we did not raise.</p>
+        <h2 data-copy="dimension-3.h2">Building with the <em>people who use it</em>.</h2>
+        <p data-copy="dimension-3.p2">I co-founded <strong>Galagos</strong> in 2025 and, alongside the agent engineering, ran customer discovery and sales with scientists. The company was EXIST-funded and entered voluntary wind-down in 2026; its benchmark write-ups and my essay from that period are preserved on this site.</p>
         <div class="facts">
-          <span data-copy="dimension-3.span" class="fact">≈ €234K non-dilutive</span>
-          <span data-copy="dimension-3.span2" class="fact">Founder-led sales</span>
-          <span data-copy="dimension-3.span3" class="fact">Antler residency</span>
+          <span data-copy="dimension-3.span" class="fact">EXIST-funded</span>
+          <span data-copy="dimension-3.span2" class="fact">Customer discovery</span>
+          <span data-copy="dimension-3.span3" class="fact">2025–2026</span>
         </div>
       </article>
 
       <article class="chapter" data-act="3" data-accent="violet" id="dimension-4">
         <p data-copy="dimension-4.p" class="part">06 · The communicator &amp; mentor</p>
         <h2 data-copy="dimension-4.h2">Making complex science <em>legible</em>.</h2>
-        <p data-copy="dimension-4.p2">I sit on the board of <strong>IABioMed</strong>, the Spanish Society for AI in Biomedicine, as Head of Communications. I taught a 12-session graduate course in systems medicine at the University of Hamburg, have supervised or mentored 19 students, and in 2026 took my seminar <em class="prose">Your Research, Supercharged</em> to the Max Planck Institute, CSSB Hamburg, the University of Porto and IABioMed, in English and Spanish.</p>
+        <p data-copy="dimension-4.p2">I taught a 12-session graduate course in systems medicine at the University of Hamburg and have supervised or mentored 19 students. In 2026 I gave my seminar <em class="prose">Your Research, Supercharged</em> at the Max Planck Institute, CSSB Hamburg, the University of Porto and <a href="https://www.youtube.com/watch?v=9geDo0973n0" target="_blank" rel="noopener"><strong>IABioMed</strong></a>, in English and Spanish.</p>
         <div class="facts">
-          <span data-copy="dimension-4.span" class="fact">IABioMed board</span>
+          <span data-copy="dimension-4.span" class="fact">IABioMed seminar</span>
           <span data-copy="dimension-4.span2" class="fact">19 students supervised or mentored</span>
-          <span data-copy="dimension-4.span3" class="fact">EN · ES · DE (basic)</span>
+          <span data-copy="dimension-4.span3" class="fact">EN (C1) · ES (native) · DE (B1)</span>
         </div>
       </article>
 
@@ -778,38 +812,41 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
     <div class="band-head">
       <p data-copy="work.p" class="part rise">07 · Selected work</p>
       <h2 data-copy="work.h2" class="rise d1">Products &amp; tools that <em>shipped</em>.</h2>
-      <p data-copy="work.p2" class="rise d2">Published algorithms, open-source packages and shipped product work, each with a link you can check.</p>
+      <p data-copy="work.p2" class="rise d2">Research, evaluation and working tools, each with a link you can check and my own contribution stated.</p>
     </div>
     <div class="cards">
       <article class="card rise">
         <span data-copy="work.span" class="no">01</span>
-        <h3 data-copy="work.h3">Galagos <small>Co-Founder · CTO</small></h3>
-        <p data-copy="work.p3">An agentic “virtual bioinformatician” I carried from prototype to benchmarked release as CTO. On the full 205-task BixBench set it solved 166 of 205, 81.0%, at roughly €0.87 a question, and 92.0% on the 50-question expert-verified subset (46 of 50). Both runs were scored in-house, with the methodology published openly. NVIDIA Inception member; approximately €234K in non-dilutive public grants.</p>
-        <a data-copy="work.a" class="go" href="https://galagos.ai" target="_blank" rel="noopener">2025 to 2026 ↗</a>
+        <h3 data-copy="work.h3">Galagos <small>Co-Founder · CTO · 2025–2026</small></h3>
+        <p data-copy="work.p3">An agentic platform for computational biology. I owned the agent layer, the grading semantics and the end-to-end tests. Self-scored BixBench results, June 2026: 166 of 205 (81.0%) and 46 of 50 (92.0%), with cost and failure analysis published.</p>
+        <div class="card-links">
+          <a data-copy="work.a6" class="go" href="writing/bixbench-full/">Full benchmark · archived</a>
+          <a data-copy="work.a7" class="go" href="writing/bixbench-verified-50/">Verified-50 · archived</a>
+        </div>
       </article>
       <article class="card rise d1">
         <span data-copy="work.span2" class="no">02</span>
-        <h3 data-copy="work.h32">ChatDRex <small>Concept · Co-senior author</small></h3>
-        <p data-copy="work.p4">A conversational, multi-agent drug-repurposing engine curated by the REPO4EU consortium, built with the students and colleagues I worked with at CoSy.Bio, on the conversational agent I had prototyped in 2022. One of three co-senior authors; manuscript under review.</p>
-        <a data-copy="work.a2" class="go" href="https://arxiv.org/abs/2511.21438" target="_blank" rel="noopener">Preprint ↗</a>
+        <h3 data-copy="work.h32">ChatDRex <small>Prototype · Co-senior author</small></h3>
+        <p data-copy="work.p4">A conversational, multi-agent drug-repurposing engine curated by REPO4EU, built at CoSy.Bio on the agent I prototyped in 2022. One of three co-senior authors; preprint (arXiv, 2026).</p>
+        <a data-copy="work.a2" class="go" href="https://arxiv.org/abs/2511.21438" target="_blank" rel="noopener">Read preprint ↗</a>
       </article>
       <article class="card rise d2">
         <span data-copy="work.span3" class="no">03</span>
         <h3 data-copy="work.h33">AcadeMate <small>Author</small></h3>
-        <p data-copy="work.p5">AI for systematic-review literature screening: the applied companion to my first-author PNAS work on LLMs in evidence synthesis.</p>
-        <a data-copy="work.a3" class="go" href="https://github.com/fmdelgado/academatepy" target="_blank" rel="noopener">GitHub ↗</a>
+        <p data-copy="work.p5">AI-assisted literature screening for systematic reviews: the applied companion to my first-author PNAS study, which benchmarked 18 LLMs against human reviewers across three reviews and reported a 33–93% reduction in one reviewer’s screening workload.</p>
+        <a data-copy="work.a3" class="go" href="https://github.com/fmdelgado/academatepy" target="_blank" rel="noopener" aria-label="View AcadeMate code">View code ↗</a>
       </article>
       <article class="card rise">
         <span data-copy="work.span4" class="no">04</span>
-        <h3 data-copy="work.h34">DRaCOoN <small>First author</small></h3>
-        <p data-copy="work.p6">A novel algorithm for pathway-level differential co-expression analysis in transcriptomics. First author, BMC Bioinformatics (2025). Reference implementation on GitHub, and on PyPI as dracoonpy.</p>
-        <a data-copy="work.a4" class="go" href="https://link.springer.com/article/10.1186/s12859-025-06162-9" target="_blank" rel="noopener">BMC Bioinf. ↗</a>
+        <h3 data-copy="work.h34">DRaCOoN <small>Algorithm designer · First author</small></h3>
+        <p data-copy="work.p6">Pathway-level differential co-expression analysis in transcriptomics. I designed the algorithm and its Python package; the paper benchmarks an information-theoretic variant against eight alternative methods. BMC Bioinformatics (2025); on PyPI as dracoonpy.</p>
+        <a data-copy="work.a4" class="go" href="https://link.springer.com/article/10.1186/s12859-025-06162-9" target="_blank" rel="noopener">Read paper ↗</a>
       </article>
       <article class="card rise d1">
         <span data-copy="work.span5" class="no">05</span>
         <h3 data-copy="work.h35">EnGNet / pyEnGNet <small>Algorithm creator · contributor</small></h3>
         <p data-copy="work.p7">Ensemble gene co-expression network reconstruction, the algorithm behind my PhD, originally in Java. Later reimplemented in Python and multi-GPU accelerated, published in The Journal of Supercomputing (2024).</p>
-        <a data-copy="work.a5" class="go" href="https://github.com/Daiego43/pyEnGNet" target="_blank" rel="noopener">pyEnGNet ↗</a>
+        <a data-copy="work.a5" class="go" href="https://github.com/Daiego43/pyEnGNet" target="_blank" rel="noopener" aria-label="View pyEnGNet code">View code ↗</a>
       </article>
     </div>
   </div>
@@ -826,7 +863,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
       <div class="depth rise">
         <span data-copy="expertise.span" class="no">01</span>
         <h3 data-copy="expertise.h3">Agentic AI</h3>
-        <p data-copy="expertise.p2">LLM scientific agents; LangChain and LangGraph multi-agent systems; RAG, context engineering and hallucination control; LLM evaluation methodology, published openly.</p>
+        <p data-copy="expertise.p2">LLM scientific agents; LangChain and LangGraph multi-agent systems; RAG, context engineering and hallucination control; LLM evaluation with reference sets, repeat runs and failure taxonomies.</p>
       </div>
       <div class="depth rise d1">
         <span data-copy="expertise.span2" class="no">02</span>
@@ -836,7 +873,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
       <div class="depth rise d2">
         <span data-copy="expertise.span3" class="no">03</span>
         <h3 data-copy="expertise.h33">Production systems</h3>
-        <p data-copy="expertise.p4">Python, R, Java and CUDA; multi-GPU and Nextflow HPC pipelines; model-agnostic architecture on single-tenant, GDPR-resident EU infrastructure.</p>
+        <p data-copy="expertise.p4">Python, R, Java and CUDA; multi-GPU and Nextflow HPC pipelines; CI/CD, end-to-end tests, tracing and multi-provider LLM integration.</p>
       </div>
     </div>
   </div>
@@ -848,34 +885,42 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
     <div class="band-head">
       <p data-copy="research.p" class="part rise">09 · Research</p>
       <h2 data-copy="research.h2" class="rise d1">Peer-reviewed, and <em>checkable</em>.</h2>
-      <p data-copy="research.p2" class="rise d2" style="font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;color:var(--ink-3)">Google Scholar · verified 7 August 2026</p>
+      <p data-copy="research.p2" class="rise d2" style="font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;color:var(--ink-3)">Google Scholar · snapshot 6 October 2026</p>
     </div>
     <div class="metrics rise">
-      <div class="metric"><b data-copy="research.b">443</b><span data-copy="research.span">Citations</span></div>
+      <div class="metric"><b data-copy="research.b">490</b><span data-copy="research.span">Citations</span></div>
       <div class="metric"><b data-copy="research.b2">8</b><span data-copy="research.span2">h-index</span></div>
-      <div class="metric"><b data-copy="research.b3">11</b><span data-copy="research.span3">Peer-reviewed papers</span></div>
-      <div class="metric"><b data-copy="research.b4">6</b><span data-copy="research.span4">First-author papers</span></div>
+      <div class="metric"><b data-copy="research.b3">160</b><span data-copy="research.span3">PNAS citations</span></div>
+      <div class="metric"><b data-copy="research.b4">223</b><span data-copy="research.span4">AIM review citations</span></div>
     </div>
     <div class="papers">
       <article class="paper rise">
         <p data-copy="research.p3" class="venue">PNAS · 2025</p>
-        <div><h3 data-copy="research.h3">Transforming literature screening: the emerging role of large language models in systematic reviews</h3><p data-copy="research.p4" class="role">First author · approximately 117 citations</p></div>
+        <div><h3 data-copy="research.h3"><a href="https://doi.org/10.1073/pnas.2411962122" target="_blank" rel="noopener">Transforming literature screening: the emerging role of large language models in systematic reviews</a></h3><p data-copy="research.p4" class="role">First author · 18 LLMs benchmarked against human reviewers</p></div>
+      </article>
+      <article class="paper rise">
+        <p data-copy="research.nbtVenue" class="venue">Nature Biotechnology · 2025</p>
+        <div><h3 data-copy="research.nbt"><a href="https://doi.org/10.1038/s41587-024-02534-3" target="_blank" rel="noopener">A platform for the biomedical application of large language models</a></h3><p data-copy="research.nbtRole" class="role">Co-author · The BioChatter Consortium</p></div>
+      </article>
+      <article class="paper rise">
+        <p data-copy="research.bioinfVenue" class="venue">Bioinformatics · 2026</p>
+        <div><h3 data-copy="research.bioinf"><a href="https://doi.org/10.1093/bioinformatics/btag223" target="_blank" rel="noopener">Inferring and evaluating network medicine-based disease modules with Nextflow</a></h3><p data-copy="research.bioinfRole" class="role">Co-author · nf-core/diseasemodulediscovery</p></div>
       </article>
       <article class="paper rise">
         <p data-copy="research.p5" class="venue">Nature · 2025</p>
-        <div><h3 data-copy="research.h32">Pathology-oriented multiplexing enables integrative disease mapping</h3><p data-copy="research.p6" class="role">Contributing co-author</p></div>
+        <div><h3 data-copy="research.h32"><a href="https://doi.org/10.1038/s41586-025-09225-2" target="_blank" rel="noopener">Pathology-oriented multiplexing enables integrative disease mapping</a></h3><p data-copy="research.p6" class="role">Contributing co-author</p></div>
       </article>
       <article class="paper rise">
         <p data-copy="research.p7" class="venue">BMC Bioinformatics · 2025</p>
-        <div><h3 data-copy="research.h33">DRaCOon: a novel algorithm for pathway-level differential co-expression analysis in transcriptomics</h3><p data-copy="research.p8" class="role">First author</p></div>
+        <div><h3 data-copy="research.h33"><a href="https://doi.org/10.1186/s12859-025-06162-9" target="_blank" rel="noopener">DRaCOon: a novel algorithm for pathway-level differential co-expression analysis in transcriptomics</a></h3><p data-copy="research.p8" class="role">First author</p></div>
       </article>
       <article class="paper rise">
         <p data-copy="research.p9" class="venue">Artificial Intelligence in Medicine · 2019</p>
-        <div><h3 data-copy="research.h34">Computational methods for Gene Regulatory Networks reconstruction and analysis: A review</h3><p data-copy="research.p10" class="role">First author · most-cited · approximately 217 citations</p></div>
+        <div><h3 data-copy="research.h34"><a href="https://doi.org/10.1016/j.artmed.2018.10.006" target="_blank" rel="noopener">Computational methods for Gene Regulatory Networks reconstruction and analysis: A review</a></h3><p data-copy="research.p10" class="role">First author · most-cited</p></div>
       </article>
       <article class="paper rise">
         <p data-copy="research.p11" class="venue">Nucleic Acids Research · 2021</p>
-        <div><h3 data-copy="research.h35">Role of a cryptic tRNA gene operon in survival under translational stress</h3><p data-copy="research.p12" class="role">Co-author</p></div>
+        <div><h3 data-copy="research.h35"><a href="https://doi.org/10.1093/nar/gkab661" target="_blank" rel="noopener">Role of a cryptic tRNA gene operon in survival under translational stress</a></h3><p data-copy="research.p12" class="role">Co-author</p></div>
       </article>
     </div>
   </div>
@@ -885,16 +930,16 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 <section class="band" id="recognition" data-band="amber">
   <div class="wrap">
     <div class="band-head">
-      <p data-copy="recognition.p" class="part rise">10 · Recognition</p>
-      <h2 data-copy="recognition.h2" class="rise d1">Awards, talks &amp; a <em>public point of view</em>.</h2>
+      <p data-copy="recognition.p" class="part rise">10 · Talks &amp; writing</p>
+      <h2 data-copy="recognition.h2" class="rise d1">Talks, writing &amp; a <em>public point of view</em>.</h2>
     </div>
     <div class="awards">
-      <article class="award rise"><p data-copy="recognition.p2" class="yr">2023</p><h3 data-copy="recognition.h3">Young Investigator Award</h3><p data-copy="recognition.p3">REPO4EU</p></article>
-      <article class="award rise d1"><p data-copy="recognition.p4" class="yr">2023</p><h3 data-copy="recognition.h32">Best Talk · RExPO’23</h3><p data-copy="recognition.p5">Stockholm</p></article>
-      <article class="award rise d2"><p data-copy="recognition.p6" class="yr">2022</p><h3 data-copy="recognition.h33">Top 3 Speaker · RExPO’22</h3><p data-copy="recognition.p7">Maastricht</p></article>
-      <article class="award rise"><p data-copy="recognition.p8" class="yr">2026</p><h3 data-copy="recognition.h34">Deep Tech Momentum · DTM100</h3><p data-copy="recognition.p9">Galagos · Berlin</p></article>
-      <article class="award rise d1"><p data-copy="recognition.p10" class="yr">2026</p><h3 data-copy="recognition.h35">Falling Walls Venture</h3><p data-copy="recognition.p11">Nominated, April 2026</p></article>
-      <article class="award rise d2"><p data-copy="recognition.p12" class="yr">Series</p><h3 data-copy="recognition.h36">“Your Research, Supercharged” · solo seminar</h3><p data-copy="recognition.p13">MPI · CSSB</p></article>
+      <article class="award rise"><p data-copy="recognition.p2" class="yr">Jun 2026</p><h3 data-copy="recognition.h3"><a href="https://www.youtube.com/watch?v=9geDo0973n0" target="_blank" rel="noopener">Your Research, Supercharged ↗</a></h3><p data-copy="recognition.p3">IABioMed seminar · Spanish</p></article>
+      <article class="award rise d1"><p data-copy="recognition.p4" class="yr">Sep 2026</p><h3 data-copy="recognition.h32"><a href="https://repo4.eu/rexpo26/agenda/" target="_blank" rel="noopener">Talk to Your Data ↗</a></h3><p data-copy="recognition.p5">RExPO26 workshop · Berlin</p></article>
+      <article class="award rise d2"><p data-copy="recognition.p6" class="yr">Jun 2026</p><h3 data-copy="recognition.h33"><a href="writing/vibe-researching/">The Quiet Cost of Vibe Researching</a></h3><p data-copy="recognition.p7">Essay · archived with attribution</p></article>
+      <article class="award rise"><p data-copy="recognition.p8" class="yr">Jun 2026</p><h3 data-copy="recognition.h34"><a href="writing/bixbench-full/">BixBench, the full benchmark</a></h3><p data-copy="recognition.p9">Results, cost &amp; failure analysis</p></article>
+      <article class="award rise d1"><p data-copy="recognition.p10" class="yr">Oct 2025</p><h3 data-copy="recognition.h35"><a href="https://github.com/langchain-ai/langchain-google/pull/1263" target="_blank" rel="noopener">LangChain PR #1263 ↗</a></h3><p data-copy="recognition.p11">Merged upstream fix</p></article>
+      <article class="award rise d2"><p data-copy="recognition.p12" class="yr">2026</p><h3 data-copy="recognition.h36">“Your Research, Supercharged” · seminar series</h3><p data-copy="recognition.p13">MPI · CSSB · Porto</p></article>
     </div>
   </div>
 </section>
@@ -917,28 +962,12 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 <section class="contact studs" id="contact" data-band="violet">
   <div class="wrap">
     <p data-copy="contact.p" class="part rise">11 · Contact</p>
-    <h2 data-copy="contact.h2" class="rise d1">Looking for the next system to make <em>legible</em>.</h2>
+    <h2 data-copy="contact.h2" class="rise d1">Let’s build AI that earns scientific <em>trust</em>.</h2>
     <div class="reach rise d2">
 
       <!-- primary target: the address is visible, and copyable in one tap -->
       <div class="reach-primary">
-        <a data-copy="contact.a" class="reach-mail" href="mailto:ferdecha@gmail.com?subject=Hello%20from%20your%20site">
-          <span class="reach-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <rect x="2" y="4" width="20" height="16" rx="2"/>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-            </svg>
-          </span>
-          <span class="reach-txt">
-            <b>Email me</b>
-            <span class="reach-sub">ferdecha@gmail.com</span>
-          </span>
-          <span class="reach-go">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
-            </svg>
-          </span>
-        </a>
+        <a data-copy="contact.a" class="reach-mail" href="mailto:ferdecha@gmail.com?subject=Hello%20from%20your%20site"><span class="reach-ico"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"> <rect x="2" y="4" width="20" height="16" rx="2"/> <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/> </svg> </span> <span class="reach-txt"> <b>Email me</b> <span class="reach-sub">ferdecha@gmail.com</span> </span> <span class="reach-go"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"> <path d="M7 7h10v10"/><path d="M7 17 17 7"/> </svg> </span></a>
 
         <button class="reach-copy" type="button" data-copy="ferdecha@gmail.com">
           <svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -955,106 +984,24 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
       <!-- profiles -->
       <div class="reach-grid">
 
-        <a data-copy="contact.a2" class="reach-link" href="https://www.linkedin.com/in/fernando-delgado-chaves" target="_blank" rel="noopener">
-          <span class="reach-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
-              <rect x="2" y="9" width="4" height="12"/>
-              <circle cx="4" cy="4" r="2"/>
-            </svg>
-          </span>
-          <span class="reach-txt">
-            <b>LinkedIn</b>
-            <span class="reach-sub">fernando-delgado-chaves</span>
-          </span>
-          <span class="reach-go">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </span>
-          <span class="sr-only">(opens in a new tab)</span>
-        </a>
+        <a data-copy="contact.a2" class="reach-link" href="https://www.linkedin.com/in/fernando-delgado-chaves" target="_blank" rel="noopener"><span class="reach-ico"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"> <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/> <rect x="2" y="9" width="4" height="12"/> <circle cx="4" cy="4" r="2"/> </svg> </span> <span class="reach-txt"> <b>LinkedIn</b> <span class="reach-sub">fernando-delgado-chaves</span> </span> <span class="reach-go"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg> </span> <span class="sr-only">(opens in a new tab)</span></a>
 
-        <a data-copy="contact.a3" class="reach-link" href="https://scholar.google.com/citations?user=LT3VzUgAAAAJ" target="_blank" rel="noopener">
-          <span class="reach-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <path d="M21.4 10.92a1 1 0 0 0 0-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/>
-              <path d="M22 10v6"/>
-              <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
-            </svg>
-          </span>
-          <span class="reach-txt">
-            <b>Google Scholar</b>
-            <span class="reach-sub">Papers &amp; citations</span>
-          </span>
-          <span class="reach-go">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </span>
-          <span class="sr-only">(opens in a new tab)</span>
-        </a>
+        <a data-copy="contact.a3" class="reach-link" href="https://scholar.google.com/citations?user=LT3VzUgAAAAJ" target="_blank" rel="noopener"><span class="reach-ico"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"> <path d="M21.4 10.92a1 1 0 0 0 0-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/> <path d="M22 10v6"/> <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/> </svg> </span> <span class="reach-txt"> <b>Google Scholar</b> <span class="reach-sub">Papers &amp; citations</span> </span> <span class="reach-go"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg> </span> <span class="sr-only">(opens in a new tab)</span></a>
 
-        <a data-copy="contact.a4" class="reach-link" href="https://orcid.org/0000-0002-6171-1215" target="_blank" rel="noopener">
-          <span class="reach-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/>
-              <path d="m9 12 2 2 4-4"/>
-            </svg>
-          </span>
-          <span class="reach-txt">
-            <b>ORCID</b>
-            <span class="reach-sub">0000-0002-6171-1215</span>
-          </span>
-          <span class="reach-go">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </span>
-          <span class="sr-only">(opens in a new tab)</span>
-        </a>
+        <a data-copy="contact.a4" class="reach-link" href="https://orcid.org/0000-0002-6171-1215" target="_blank" rel="noopener"><span class="reach-ico"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"> <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/> <path d="m9 12 2 2 4-4"/> </svg> </span> <span class="reach-txt"> <b>ORCID</b> <span class="reach-sub">0000-0002-6171-1215</span> </span> <span class="reach-go"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg> </span> <span class="sr-only">(opens in a new tab)</span></a>
 
-        <a data-copy="contact.a5" class="reach-link" href="https://github.com/fmdelgado" target="_blank" rel="noopener">
-          <span class="reach-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.4.5-.7 1.1-.8 1.7-.1.6-.1 1.3 0 1.9v4"/>
-              <path d="M9 18c-4.51 2-5-2-7-2"/>
-            </svg>
-          </span>
-          <span class="reach-txt">
-            <b>GitHub</b>
-            <span class="reach-sub reach-sub-wrap">academatepy &middot; DRACOONpy &middot; drugrepochatter</span>
-          </span>
-          <span class="reach-go">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </span>
-          <span class="sr-only">(opens in a new tab)</span>
-        </a>
+        <a data-copy="contact.a5" class="reach-link" href="https://github.com/fmdelgado" target="_blank" rel="noopener"><span class="reach-ico"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"> <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.4.5-.7 1.1-.8 1.7-.1.6-.1 1.3 0 1.9v4"/> <path d="M9 18c-4.51 2-5-2-7-2"/> </svg> </span> <span class="reach-txt"> <b>GitHub</b> <span class="reach-sub reach-sub-wrap">academatepy &middot; DRACOONpy &middot; drugrepochatter</span> </span> <span class="reach-go"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg> </span> <span class="sr-only">(opens in a new tab)</span></a>
 
       </div>
 
       <!-- metadata: where, and in which timezone -->
-      <p data-copy="contact.p2" class="reach-meta">
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-          Hamburg &middot; Seville
-        </span>
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
-          </svg>
-          Central European Time
-        </span>
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M5 8h14"/><path d="M5 12h9"/><path d="M5 16h5"/>
-          </svg>
-          EN &middot; ES &middot; DE (basic)
-        </span>
-      </p>
+      <p data-copy="contact.p2" class="reach-meta"><span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"> <path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/> <circle cx="12" cy="10" r="3"/> </svg> Hamburg &middot; Seville </span> <span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"> <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/> </svg> Central European Time </span> <span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"> <path d="M5 8h14"/><path d="M5 12h9"/><path d="M5 16h5"/> </svg> EN (C1) &middot; ES (native) &middot; DE (B1) </span></p>
 
       <span class="sr-only" role="status" aria-live="polite" id="reachStatus"></span>
     </div>
     <footer>
       <span data-copy="footer.span">© 2026 Fernando M. Delgado-Chaves</span>
-      <span data-copy="footer.span2">Open to Applied AI and forward-deployed engineering roles</span>
+      <span data-copy="footer.span2">Open to applied-AI and AI-research roles in life sciences</span>
     </footer>
   </div>
 </section>
@@ -1099,9 +1046,29 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 (function(){
   'use strict';
   var reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  var compactStory = matchMedia('(max-width:900px)');
+  var compactPalace = matchMedia('(max-width:1000px)');
 
   /* ── header hairline ─────────────────────────────── */
   var hdr = document.getElementById('hdr');
+  function measureHeader(){
+    document.documentElement.style.setProperty('--header-h', hdr.getBoundingClientRect().height + 'px');
+  }
+  new ResizeObserver(measureHeader).observe(hdr);
+  measureHeader();
+  var navLinks = Array.prototype.slice.call(hdr.querySelectorAll('nav a[href^="#"]'));
+  function updateNavigation(){
+    var current = null;
+    var edge = hdr.getBoundingClientRect().height + 48;
+    navLinks.forEach(function(a){
+      var target = document.querySelector(a.getAttribute('href'));
+      if (target && target.getBoundingClientRect().top <= edge) current = a;
+    });
+    navLinks.forEach(function(a){
+      if (a === current) a.setAttribute('aria-current', 'location');
+      else a.removeAttribute('aria-current');
+    });
+  }
   addEventListener('scroll', function(){
     hdr.classList.toggle('stuck', scrollY > 8);
   }, {passive:true});
@@ -1122,29 +1089,51 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 
 
 
-  /* ── the gap film: loads when it nears the viewport, never on phones ── */
+  /* ── the gap film: user control, offscreen pause, and live preferences ── */
   (function(){
     var v = document.getElementById('gapFilm');
-    if (!v) return;
+    var control = document.getElementById('filmControl');
+    if (!v || !control) return;
     var poster = v.getAttribute('poster');
-    if (reduce.matches || innerWidth < 901) {          /* still frame, no fetch */
-      v.style.cssText += ';background-image:url(' + poster + ');background-size:cover;background-position:center;opacity:.5';
-      v.classList.add('on');
-      return;
-    }
-    var RATE = 0.5;                                    /* one number: pace of the film */
-    new IntersectionObserver(function(es, o){
-      if (!es[0].isIntersecting) return;
-      o.disconnect();
-      v.src = 'media/hero/hero-loop-web.mp4';
-      v.load();
+    var near = false, pausedByUser = false;
+    function allowed(){ return !reduce.matches && !compactStory.matches; }
+    function syncFilm(){
+      control.hidden = !allowed() || !near;
+      control.textContent = pausedByUser ? 'Play background video' : 'Pause background video';
+      if (!allowed()) {
+        v.pause();
+        if (v.hasAttribute('src')) { v.removeAttribute('src'); v.load(); }
+        v.style.backgroundImage = 'url(' + poster + ')';
+        v.style.backgroundSize = 'cover';
+        v.style.backgroundPosition = 'center';
+        v.style.opacity = '.5';
+        v.classList.add('on');
+        return;
+      }
+      v.style.removeProperty('background-image');
+      v.style.removeProperty('opacity');
+      if (!near || pausedByUser) { v.pause(); return; }
+      if (!v.hasAttribute('src')) { v.src = 'media/hero/hero-loop-web.mp4'; v.load(); }
       var go = v.play();
-      if (go && go.catch) go.catch(function(){});
-      ['loadedmetadata','play'].forEach(function(e){
-        v.addEventListener(e, function(){ v.playbackRate = RATE; });
+      if (go && go.catch) go.catch(function(error){
+        if ((error && error.name === 'AbortError') || !allowed() || !near || pausedByUser) return;
+        pausedByUser = true;
+        control.textContent = 'Play background video';
       });
-      v.addEventListener('playing', function(){ v.classList.add('on'); }, {once:true});
-    }, {rootMargin:'50% 0px'}).observe(v);
+    }
+    control.addEventListener('click', function(){ pausedByUser = !pausedByUser; syncFilm(); });
+    v.addEventListener('loadedmetadata', function(){ v.playbackRate = .5; });
+    v.addEventListener('playing', function(){
+      if (!allowed() || !near || pausedByUser) v.pause();
+      else v.classList.add('on');
+    });
+    new IntersectionObserver(function(es){
+      near = es[0].isIntersecting;
+      syncFilm();
+    }, {rootMargin:'0px'}).observe(v);
+    reduce.addEventListener('change', syncFilm);
+    compactStory.addEventListener('change', syncFilm);
+    syncFilm();
   })();
 
   /* ── the memory palace: assembles across sections 07–10 ── */
@@ -1158,9 +1147,10 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
     var CAPTIONS = [[0,'Scattered parts'],[.22,'Foundations'],[.45,'The spine rises'],
                     [.65,'Science docks'],[.82,'Engine and voice'],[.95,'Everything I build with']];
 
+    function animatePalace(){ return !reduce.matches && !compactPalace.matches; }
     var ready = false, store = [];
-    new IntersectionObserver(function(es){
-      if (es[0].isIntersecting && !ready) {
+    var palaceLoader = new IntersectionObserver(function(es){
+      if (es[0].isIntersecting && !ready && animatePalace()) {
         ready = true;
         for (var n = 0; n < FRAMES; n++) {
           var im = new Image();
@@ -1169,11 +1159,19 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
           store.push(im);
         }
       }
-    }, {rootMargin:'60% 0px'}).observe(wrap);
+    }, {rootMargin:'60% 0px'});
+    palaceLoader.observe(wrap);
 
     var lastIdx = -1, queued = false;
     function paint(){
       queued = false;
+      if (!animatePalace()) {
+        var complete = BASE + pad(FRAMES - 1) + '.webp' + VER;
+        if (img.getAttribute('src') !== complete) img.src = complete;
+        if (cap) cap.textContent = 'Everything I build with';
+        lastIdx = -1;
+        return;
+      }
       var r = wrap.getBoundingClientRect();
       /* progress across the whole rail, measured against the sticky viewport */
       var span = r.height - innerHeight;
@@ -1194,6 +1192,12 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
     function onScroll(){ if (!queued) { queued = true; requestAnimationFrame(paint); } }
     addEventListener('scroll', onScroll, {passive:true});
     addEventListener('resize', onScroll, {passive:true});
+    function palacePreference(){
+      if (animatePalace() && !ready) { palaceLoader.unobserve(wrap); palaceLoader.observe(wrap); }
+      onScroll();
+    }
+    reduce.addEventListener('change', palacePreference);
+    compactPalace.addEventListener('change', palacePreference);
     paint();
   })();
 
@@ -1201,7 +1205,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
   var ACCENTS = {
     teal:  ['#0B6C78','rgba(11,108,120,.10)'],
     blue:  ['#0050B6','rgba(0,80,182,.10)'],
-    amber: ['#C57A0B','rgba(197,122,11,.11)'],
+    amber: ['#925900','rgba(146,89,0,.11)'],
     violet:['#643E8F','rgba(100,62,143,.10)']
   };
   var bands = Array.prototype.slice.call(document.querySelectorAll('[data-band]'));
@@ -1218,6 +1222,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
     var b = document.createElement('button');
     b.innerHTML = '<i></i>';
     b.setAttribute('aria-label', 'Go to ' + (ch.querySelector('h2') ? ch.querySelector('h2').textContent.trim() : 'section ' + (i+1)));
+    b.setAttribute('aria-controls', ch.id);
     b.addEventListener('click', function(){ ch.scrollIntoView({behavior: reduce.matches ? 'auto' : 'smooth', block:'center'}); });
     rail.appendChild(b);
   });
@@ -1237,7 +1242,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
   var loaded = false, cache = [];
   var lazy = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if (e.isIntersecting && !loaded) {
+      if (e.isIntersecting && !loaded && !reduce.matches && !compactStory.matches) {
         loaded = true;
         clips.forEach(function(el, ci){
           var base = el.dataset.seq;
@@ -1287,14 +1292,19 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
 
   function frame(){
     ticking = false;
+    updateNavigation();
     var mid = innerHeight * 0.5;
     var nr = narrative.getBoundingClientRect();
     var inBuild = nr.top < mid && nr.bottom > mid;
 
     /* outside the build, the accent belongs to whichever band owns the viewport
        middle — the colour system keeps meaning instead of freezing on violet */
-    rail.style.opacity = inBuild ? '1' : '0';
-    rail.style.pointerEvents = inBuild ? '' : 'none';
+    var railVisible = inBuild && innerWidth > 1100 && innerHeight > 500;
+    if (!railVisible && rail.contains(document.activeElement)) {
+      navLinks[0].focus({preventScroll:true});
+    }
+    rail.inert = !railVisible;
+    rail.style.opacity = railVisible ? '1' : '0';
     if (!inBuild) {
       var owner = null;
       for (var b = 0; b < bands.length; b++) {
@@ -1317,7 +1327,7 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
     railBtns.forEach(function(b, n){ b.setAttribute('aria-current', n === nearest ? 'true' : 'false'); });
 
     var clip = clips[i];
-    if (reduce.matches || !clip || f <= HOLD) {
+    if (reduce.matches || compactStory.matches || !clip || f <= HOLD) {
       show(stills[i]);
     } else if (f >= 1 - HOLD) {
       show(stills[Math.min(i + 1, stills.length - 1)]);
@@ -1345,6 +1355,15 @@ footer{padding-block:2rem 3rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;
   }
   addEventListener('scroll', onScroll, {passive:true});
   addEventListener('resize', onScroll, {passive:true});
+  function storyPreference(){
+    if (!reduce.matches && !compactStory.matches && !loaded) {
+      lazy.unobserve(narrative); lazy.observe(narrative);
+    }
+    if (reduce.matches) rises.forEach(function(el){ el.classList.add('in'); });
+    onScroll();
+  }
+  reduce.addEventListener('change', storyPreference);
+  compactStory.addEventListener('change', storyPreference);
   
   frame();
 })();
